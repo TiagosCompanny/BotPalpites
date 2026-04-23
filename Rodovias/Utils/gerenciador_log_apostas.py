@@ -1,182 +1,171 @@
-import os
+from __future__ import annotations
+
+import csv
+from dataclasses import asdict, dataclass
 from datetime import datetime
-import pandas as pd
-from openpyxl import load_workbook
-from openpyxl import Workbook, load_workbook
+from enum import Enum
+from pathlib import Path
+from typing import Dict, Iterable, Optional, Type
 
-# Pega a pasta onde este arquivo .py está salvo
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Cria o caminho para a pasta de logs dentro do projeto
-PASTA_LOGS = os.path.join(BASE_DIR, "LogApostasRodovias")
 
-class GerenciadorLogApostas:
-    def __init__(self, pasta_base=None, nome_arquivo="log_apostas_rodovias.xlsx"):
-        if pasta_base is None:
-            pasta_base = PASTA_LOGS
+class TipoLog(str, Enum):
+    PREVISAO = "Previsao"
+    ORDEM = "Ordem"
+    RESULTADO = "Resultado"
+    EXECUCAO = "Execucao"
+    TREINAMENTO = "Treinamento"
 
-        self.pasta_base = pasta_base
-        self.caminho_arquivo = os.path.join(self.pasta_base, nome_arquivo)
 
-        self.abas = {
-            "Decisoes": [
-                "data_hora",
-                "market_id",
-                "rodovia",
-                "meta_referencia",
-                "previsao",
-                "confianca",
-                "threshold",
-                "apostar",
-                "motivo"
-            ],
-            "Ordens": [
-                "data_hora",
-                "market_id",
-                "rodovia",
-                "selection_id",
-                "order_id",
-                "tipo_execucao",
-                "odds_tentativa",
-                "odd_executada",
-                "status_final",
-                "valor_total"
-            ],
-            "Resultados": [
-                "data_hora",
-                "market_id",
-                "rodovia",
-                "previsao",
-                "resultado_real",
-                "acertou",
-                "saldo_antes",
-                "saldo_depois",
-                "lucro_prejuizo"
-            ]
-        }
+@dataclass(slots=True)
+class PrevisaoLog:
+    data_hora: str
+    rodovia: str
+    market_id: str
+    selection_id: Optional[str]
+    nome_modelo: str
+    classe_prevista: str
+    confianca: float
+    threshold: float
+    meta_referencia: str
+    odd_minima_aceita: float
 
-        self._garantir_estrutura()
 
-    def _garantir_estrutura(self):
-        os.makedirs(self.pasta_base, exist_ok=True)
+@dataclass(slots=True)
+class OrdemLog:
+    data_hora: str
+    rodovia: str
+    market_id: str
+    selection_id: str
+    tipo_ordem: str
+    direcao_aposta: str
+    stake: float
+    odd_solicitada: float
+    ordem_enviada: bool
+    ordem_executada: bool
+    status_ordem: str
+    order_id: str
 
-        if not os.path.exists(self.caminho_arquivo):
-            with pd.ExcelWriter(self.caminho_arquivo, engine="openpyxl") as writer:
-                for aba, colunas in self.abas.items():
-                    df = pd.DataFrame(columns=colunas)
-                    df.to_excel(writer, sheet_name=aba, index=False)
 
-    def _safe_load(self):
-        if not os.path.exists(self.caminho_arquivo):
-            self._garantir_estrutura()
+@dataclass(slots=True)
+class ResultadoLog:
+    data_hora: str
+    rodovia: str
+    market_id: str
+    selection_id: str
+    classe_prevista: str
+    confianca: float
+    aposta_realizada: bool
+    direcao_aposta: str
+    valor_observado_depois: float
+    meta_ou_linha_mercado: str
+    acertou_previsao: bool
+    aposta_ganha: bool
+    lucro_prejuizo: float
 
-        try:
-            return load_workbook(self.caminho_arquivo)
-        except Exception:
-            # arquivo corrompido → recria corretamente
-            print("⚠️ Arquivo de log corrompido. Recriando...")
 
-            if os.path.exists(self.caminho_arquivo):
-                os.remove(self.caminho_arquivo)
+@dataclass(slots=True)
+class ExecucaoLog:
+    data_hora: str
+    rodovia: str
+    etapa: str
+    status: str
+    mensagem: str
+    market_id: str
+    nome_metodo: str
+    tempo_execucao_ms: int
 
-            self._garantir_estrutura()
-            return load_workbook(self.caminho_arquivo)
-    
-    def _append_linha(self, nome_aba, dados):
-        if nome_aba not in self.abas:
-            raise ValueError(f"Aba inválida: {nome_aba}")
 
-        dados_final = {}
-        for coluna in self.abas[nome_aba]:
-            dados_final[coluna] = dados.get(coluna)
+@dataclass(slots=True)
+class TreinamentoLog:
+    data_hora: str
+    rodovia: str
+    nome_modelo: str
+    versao_modelo: str
+    algoritmo: str
+    arquivo_base: str
+    quantidade_registros: int
+    quantidade_treino: int
+    quantidade_teste: int
+    campos_utilizados: str
+    campo_alvo: str
+    balanceamento_aplicado: str
+    acuracia: float
+    macro_f1: float
+    f1_mais: float
+    f1_ate: float
+    baseline: float
 
-        df_novo = pd.DataFrame([dados_final])
 
-        if not os.path.exists(self.caminho_arquivo):
-            self._garantir_estrutura()
+LOG_MODEL_POR_TIPO: Dict[TipoLog, Type] = {
+    TipoLog.PREVISAO: PrevisaoLog,
+    TipoLog.ORDEM: OrdemLog,
+    TipoLog.RESULTADO: ResultadoLog,
+    TipoLog.EXECUCAO: ExecucaoLog,
+    TipoLog.TREINAMENTO: TreinamentoLog,
+}
 
-        workbook = self._safe_load()
 
-        if nome_aba not in workbook.sheetnames:
-            with pd.ExcelWriter(self.caminho_arquivo, engine="openpyxl", mode="a", if_sheet_exists="overlay") as writer:
-                df_novo.to_excel(writer, sheet_name=nome_aba, index=False)
-            return
+class LogService:
+    """Serviço central para gravação de logs em CSV por tipo e por dia."""
 
-        worksheet = workbook[nome_aba]
-        startrow = worksheet.max_row
+    def __init__(self, pasta_base: Optional[str] = None) -> None:
+        base_path = Path(__file__).resolve().parent
+        self.pasta_base = Path(pasta_base) if pasta_base else base_path / "LogApostasRodovias"
 
-        with pd.ExcelWriter(self.caminho_arquivo, engine="openpyxl", mode="a", if_sheet_exists="overlay") as writer:
-            df_novo.to_excel(writer, sheet_name=nome_aba, index=False, header=False, startrow=startrow)
+    def registrar(self, tipo_log: TipoLog, log: object) -> Path:
+        self._validar_tipo_modelo(tipo_log, log)
 
-    def registrar_decisao(
-        self,
-        market_id,
-        rodovia,
-        meta_referencia,
-        previsao,
-        confianca,
-        threshold,
-        apostar,
-        motivo
-    ):
-        self._append_linha("Decisoes", {
-            "data_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "market_id": market_id,
-            "rodovia": rodovia,
-            "meta_referencia": meta_referencia,
-            "previsao": previsao,
-            "confianca": confianca,
-            "threshold": threshold,
-            "apostar": apostar,
-            "motivo": motivo
-        })
+        pasta_tipo = self.pasta_base / tipo_log.value
+        pasta_tipo.mkdir(parents=True, exist_ok=True)
 
-    def registrar_ordem(
-        self,
-        market_id,
-        rodovia,
-        selection_id,
-        order_id,
-        tipo_execucao,
-        odds_tentativa,
-        odd_executada,
-        status_final,
-        valor_total
-    ):
-        self._append_linha("Ordens", {
-            "data_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "market_id": market_id,
-            "rodovia": rodovia,
-            "selection_id": selection_id,
-            "order_id": order_id,
-            "tipo_execucao": tipo_execucao,
-            "odds_tentativa": str(odds_tentativa),
-            "odd_executada": odd_executada,
-            "status_final": status_final,
-            "valor_total": valor_total
-        })
+        nome_arquivo = datetime.now().strftime("%Y-%m-%d") + ".csv"
+        arquivo_csv = pasta_tipo / nome_arquivo
 
-    def registrar_resultado(
-        self,
-        market_id,
-        rodovia,
-        previsao,
-        resultado_real,
-        acertou,
-        saldo_antes,
-        saldo_depois
-    ):
-        lucro_prejuizo = None
-        if saldo_antes is not None and saldo_depois is not None:
-            lucro_prejuizo = float(saldo_depois) - float(saldo_antes)
+        colunas = self._colunas_modelo(log)
+        registro = self._normalizar_registro(log, colunas)
 
-        self._append_linha("Resultados", {
-            "data_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "market_id": market_id,
-            "rodovia": rodovia,
-            "previsao": previsao,
-            "resultado_real": resultado_real,
-            "acertou": acertou,
-            "saldo_antes": saldo_antes,
-            "saldo_depois": saldo_depois,
-            "lucro_prejuizo": lucro_prejuizo
-        })
+        arquivo_novo = not arquivo_csv.exists()
+
+        with arquivo_csv.open("a", newline="", encoding="utf-8") as fp:
+            writer = csv.DictWriter(fp, fieldnames=colunas, delimiter=";")
+            if arquivo_novo:
+                writer.writeheader()
+            writer.writerow(registro)
+
+        return arquivo_csv
+
+    def registrar_previsao(self, log: PrevisaoLog) -> Path:
+        return self.registrar(TipoLog.PREVISAO, log)
+
+    def registrar_ordem(self, log: OrdemLog) -> Path:
+        return self.registrar(TipoLog.ORDEM, log)
+
+    def registrar_resultado(self, log: ResultadoLog) -> Path:
+        return self.registrar(TipoLog.RESULTADO, log)
+
+    def registrar_execucao(self, log: ExecucaoLog) -> Path:
+        return self.registrar(TipoLog.EXECUCAO, log)
+
+    def registrar_treinamento(self, log: TreinamentoLog) -> Path:
+        return self.registrar(TipoLog.TREINAMENTO, log)
+
+    @staticmethod
+    def agora_str() -> str:
+        return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    def _validar_tipo_modelo(self, tipo_log: TipoLog, log: object) -> None:
+        modelo_esperado = LOG_MODEL_POR_TIPO[tipo_log]
+        if not isinstance(log, modelo_esperado):
+            raise TypeError(
+                f"Tipo de objeto inválido para {tipo_log.value}. "
+                f"Esperado: {modelo_esperado.__name__}. Recebido: {type(log).__name__}"
+            )
+
+    @staticmethod
+    def _colunas_modelo(log: object) -> Iterable[str]:
+        return list(asdict(log).keys())
+
+    @staticmethod
+    def _normalizar_registro(log: object, colunas: Iterable[str]) -> Dict[str, object]:
+        registro = asdict(log)
+        return {coluna: registro.get(coluna) for coluna in colunas}
