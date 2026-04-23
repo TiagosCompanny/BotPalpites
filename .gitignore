@@ -1,0 +1,25 @@
+# Segredos locais
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Ambientes virtuais
+.venv/
+venv/
+
+# Artefatos comuns
+.ipynb_checkpoints/
+
+# Modelos ML (grandes)
+*.joblib
+*.pkl
+
+# pasta específica do seu projeto
+Passagens/modelos_passagens/
