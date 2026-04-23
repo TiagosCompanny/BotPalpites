@@ -11,6 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, classification_report
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.cluster import KMeans
+from Utils import LogService, TreinamentoLog
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -37,6 +38,8 @@ CATALOGO_RODOVIAS = {
         "nome_exibicao": "PINDAMONHANGABA"
     }
 }
+
+log_service = LogService()
 
 
 def parse_float(x):
@@ -535,6 +538,28 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
     print(f"Predições salvas em: {caminho_predicoes}")
     print(f"Importâncias salvas em: {caminho_importancias}")
 
+    log_service.registrar_treinamento(
+        TreinamentoLog(
+            data_hora=LogService.agora_str(),
+            rodovia=rodovia_identificacao,
+            nome_modelo="rf_regimes_clusters_lags",
+            versao_modelo="v1",
+            algoritmo="RandomForestClassifier",
+            arquivo_base=str(caminho_excel),
+            quantidade_registros=int(n),
+            quantidade_treino=int(len(treino)),
+            quantidade_teste=int(len(teste)),
+            campos_utilizados=",".join(features),
+            campo_alvo="alvo_mais",
+            balanceamento_aplicado="class_weight=balanced_subsample",
+            acuracia=float(metricas["accuracy"]),
+            macro_f1=float(metricas["macro_f1"]),
+            f1_mais=float(metricas["f1_mais"]),
+            f1_ate=float(metricas["f1_ate"]),
+            baseline=float(metricas["baseline_majoritaria"]),
+        )
+    )
+
 
 if __name__ == "__main__":
 
@@ -551,6 +576,28 @@ if __name__ == "__main__":
             )
         except Exception as e:
             print(f"Erro ao modelar rodovia '{rodovia_chave}': {e}")
+            config_erro = CATALOGO_RODOVIAS.get(rodovia_chave, {})
+            log_service.registrar_treinamento(
+                TreinamentoLog(
+                    data_hora=LogService.agora_str(),
+                    rodovia=config_erro.get("rodovia_identificacao", rodovia_chave),
+                    nome_modelo="rf_regimes_clusters_lags",
+                    versao_modelo="v1",
+                    algoritmo="RandomForestClassifier",
+                    arquivo_base=str(ARQUIVO_BASE),
+                    quantidade_registros=0,
+                    quantidade_treino=0,
+                    quantidade_teste=0,
+                    campos_utilizados="",
+                    campo_alvo="alvo_mais",
+                    balanceamento_aplicado=f"erro: {e}",
+                    acuracia=0.0,
+                    macro_f1=0.0,
+                    f1_mais=0.0,
+                    f1_ate=0.0,
+                    baseline=0.0,
+                )
+            )
 
     #braganca_paulista
     #caraguatatuba
