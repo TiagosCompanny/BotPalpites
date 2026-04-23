@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# from Utils.gerenciador_log_apostas import GerenciadorLogApostas
+from Utils import ExecucaoLog, LogService, OrdemLog, PrevisaoLog, ResultadoLog
 
 PASTA_MODELOS = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "modelos_rodovias"
@@ -99,7 +99,7 @@ CONFIG_ENTRADA_RODOVIA = {
     },
 }
 
-# logger_apostas = GerenciadorLogApostas()
+log_service = LogService()
 
 
 def carregar_variaveis_ambiente():
@@ -350,7 +350,6 @@ def prever_aposta(
         )
 
     item = catalogo[rodovia_identificacao]
-    metadata = item["metadata"]
     bundle = joblib.load(item["modelo"])
 
     if not isinstance(bundle, dict) or "modelo" not in bundle:
@@ -463,9 +462,12 @@ def prever_aposta(
         entrada_dict["meta_num"] * entrada_dict["umidade_relativa"]
     )
 
-    for col in features:
-        if col not in entrada_dict:
-            entrada_dict[col] = np.nan
+    colunas_faltantes = [col for col in features if col not in entrada_dict]
+    if colunas_faltantes:
+        raise ValueError(
+            "A entrada de previsão não possui todas as features esperadas pelo modelo. "
+            f"Faltando: {colunas_faltantes}"
+        )
 
     entrada = pd.DataFrame([entrada_dict])[features]
 
@@ -827,6 +829,24 @@ def log_unico(chave, mensagem):
         ultimo_log[chave] = mensagem
 
 
+def registrar_execucao(rodovia, etapa, status, mensagem, market_id="", nome_metodo=""):
+    try:
+        log_service.registrar_execucao(
+            ExecucaoLog(
+                data_hora=LogService.agora_str(),
+                rodovia=str(rodovia or ""),
+                etapa=etapa,
+                status=status,
+                mensagem=mensagem,
+                market_id=str(market_id or ""),
+                nome_metodo=nome_metodo,
+                tempo_execucao_ms=0,
+            )
+        )
+    except Exception as erro_log:
+        print(f"Falha ao registrar log de execução: {erro_log}")
+
+
 def processar_ciclo_trade():
     global market_id_em_andamento, order_id_em_andamento
 
@@ -841,6 +861,13 @@ def processar_ciclo_trade():
 
         if not mercado:
             print("status", "Nenhum mercado aberto encontrado")
+            registrar_execucao(
+                rodovia="",
+                etapa="buscar_mercado",
+                status="SEM_MERCADO",
+                mensagem="Nenhum mercado aberto encontrado",
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         market_id = mercado["id"]
@@ -857,16 +884,40 @@ def processar_ciclo_trade():
                 "status",
                 "Já existe ordem em acompanhamento para esse mercado. Não enviar nova.",
             )
+            registrar_execucao(
+                rodovia="",
+                etapa="controle_mercado",
+                status="EM_ANDAMENTO",
+                mensagem="Já existe ordem em acompanhamento para esse mercado",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         rodovia_mercado = extrair_rodovia_do_mercado(mercado)
 
         if not rodovia_mercado:
             log_unico("status", "Não foi possível identificar a rodovia do mercado")
+            registrar_execucao(
+                rodovia="",
+                etapa="extrair_rodovia",
+                status="ERRO",
+                mensagem="Não foi possível identificar a rodovia do mercado",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         if rodovia_mercado not in catalogo:
             log_unico("status", f"Rodovia sem modelo cadastrado: {rodovia_mercado}")
+            registrar_execucao(
+                rodovia=rodovia_mercado,
+                etapa="validar_modelo",
+                status="SEM_MODELO",
+                mensagem=f"Rodovia sem modelo cadastrado: {rodovia_mercado}",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         config_rodovia = CONFIG_ENTRADA_RODOVIA.get(rodovia_mercado)
@@ -875,10 +926,26 @@ def processar_ciclo_trade():
             log_unico(
                 "status", f"Rodovia sem configuração de entrada: {rodovia_mercado}"
             )
+            registrar_execucao(
+                rodovia=rodovia_mercado,
+                etapa="validar_configuracao",
+                status="SEM_CONFIG",
+                mensagem=f"Rodovia sem configuração de entrada: {rodovia_mercado}",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         if not pode_enviar_ordem(mercado):
             log_unico("status", "Não apostar, não pode enviar ordem")
+            registrar_execucao(
+                rodovia=rodovia_mercado,
+                etapa="validar_janela_aposta",
+                status="BLOQUEADO",
+                mensagem="Não pode enviar ordem para esse mercado",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         if not pode_apostar_no_primeiro_minuto(mercado):
@@ -886,11 +953,34 @@ def processar_ciclo_trade():
                 "status",
                 "Não apostar, mercado já passou do primeiro minuto de abertura",
             )
+            registrar_execucao(
+                rodovia=rodovia_mercado,
+                etapa="validar_primeiro_minuto",
+                status="FORA_JANELA",
+                mensagem="Mercado já passou do primeiro minuto de abertura",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
             return
 
         threshold_confianca = config_rodovia["threshold_confianca"]
 
         resultado = prever_aposta_por_mercado(catalogo, mercado, threshold_confianca)
+
+        log_service.registrar_previsao(
+            PrevisaoLog(
+                data_hora=LogService.agora_str(),
+                rodovia=rodovia_mercado,
+                market_id=str(market_id),
+                selection_id=None,
+                nome_modelo="rf_producao_friendly_sem_lags",
+                classe_prevista=resultado["previsao"],
+                confianca=float(resultado["confianca"]),
+                threshold=float(threshold_confianca),
+                meta_referencia=str(resultado["meta_referencia"]),
+                odd_minima_aceita=float(montar_odds_tentativa(rodovia_mercado, resultado["confianca"])[0]),
+            )
+        )
 
         # 🔒 NOVA REGRA AQUI
         # if not resultado["previsao"].startswith("Mais de"):
@@ -913,6 +1003,23 @@ def processar_ciclo_trade():
 
         if not resultado["apostar"]:
             log_unico("status", "Não apostar, resultado da previsão não indica aposta")
+            log_service.registrar_resultado(
+                ResultadoLog(
+                    data_hora=LogService.agora_str(),
+                    rodovia=rodovia_mercado,
+                    market_id=str(market_id),
+                    selection_id="",
+                    classe_prevista=resultado["previsao"],
+                    confianca=float(resultado["confianca"]),
+                    aposta_realizada=False,
+                    direcao_aposta="",
+                    valor_observado_depois=0.0,
+                    meta_ou_linha_mercado=str(resultado["meta_referencia"]),
+                    acertou_previsao=False,
+                    aposta_ganha=False,
+                    lucro_prejuizo=0.0,
+                )
+            )
             return
 
         selection_id = obter_selection_id_da_previsao(mercado, resultado)
@@ -943,13 +1050,46 @@ def processar_ciclo_trade():
         )
 
         log_unico("ordem", json.dumps(resposta_criacao_ordem, sort_keys=True))
+        log_service.registrar_ordem(
+            OrdemLog(
+                data_hora=LogService.agora_str(),
+                rodovia=rodovia_mercado,
+                market_id=str(market_id),
+                selection_id=str(selection_id),
+                tipo_ordem=str(resposta_criacao_ordem.get("tipo_execucao") or ""),
+                direcao_aposta="BUY",
+                stake=1.0,
+                odd_solicitada=float(odds_tentativa[0]),
+                ordem_enviada=True,
+                ordem_executada=bool(resposta_criacao_ordem.get("sucesso")),
+                status_ordem=str(resposta_criacao_ordem.get("status_final") or ""),
+                order_id=str(resposta_criacao_ordem.get("order_id") or ""),
+            )
+        )
 
         if resposta_criacao_ordem["sucesso"]:
             market_id_em_andamento = market_id
             order_id_em_andamento = resposta_criacao_ordem["order_id"]
 
+        registrar_execucao(
+            rodovia=rodovia_mercado,
+            etapa="ciclo_finalizado",
+            status="SUCESSO" if resposta_criacao_ordem["sucesso"] else "SEM_ENTRADA",
+            mensagem="Ciclo de trade processado",
+            market_id=market_id,
+            nome_metodo="processar_ciclo_trade",
+        )
+
     except Exception as e:
         log_unico("erro", f"Erro no ciclo: {str(e)}")
+        registrar_execucao(
+            rodovia="",
+            etapa="erro_ciclo",
+            status="ERRO",
+            mensagem=str(e),
+            market_id=str(market_id_em_andamento or ""),
+            nome_metodo="processar_ciclo_trade",
+        )
 
 
 if __name__ == "__main__":
