@@ -1,0 +1,712 @@
+data_hora;rodovia;etapa;status;mensagem;market_id;nome_metodo;tempo_execucao_ms
+2026-04-23 20:02:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:02:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:02:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:02:45;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:02:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:02:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:02:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:03:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46474;processar_ciclo_trade;0
+2026-04-23 20:07:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46479;processar_ciclo_trade;0
+2026-04-23 20:07:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46479;processar_ciclo_trade;0
+2026-04-23 20:08:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46479;processar_ciclo_trade;0
+2026-04-23 20:08:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SEM_ENTRADA;Ciclo de trade processado;46484;processar_ciclo_trade;0
+2026-04-23 20:08:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SEM_ENTRADA;Ciclo de trade processado;46484;processar_ciclo_trade;0
+2026-04-23 20:09:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SEM_ENTRADA;Ciclo de trade processado;46484;processar_ciclo_trade;0
+2026-04-23 20:09:26;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:09:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46484;processar_ciclo_trade;0
+2026-04-23 20:10:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46484;processar_ciclo_trade;0
+2026-04-23 20:10:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46484;processar_ciclo_trade;0
+2026-04-23 20:14:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46489;processar_ciclo_trade;0
+2026-04-23 20:14:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46489;processar_ciclo_trade;0
+2026-04-23 20:14:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46489;processar_ciclo_trade;0
+2026-04-23 20:14:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46489;processar_ciclo_trade;0
+2026-04-23 20:14:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46489;processar_ciclo_trade;0
+2026-04-23 20:19:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:19:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:19:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:19:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:19:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:19:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:19:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:20:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:20:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46493;processar_ciclo_trade;0
+2026-04-23 20:20:11;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:20:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:21:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:22:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:22:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46493;processar_ciclo_trade;0
+2026-04-23 20:22:08;;buscar_mercado;SEM_MERCADO;Nenhum mercado aberto encontrado;;processar_ciclo_trade;0
+2026-04-23 20:22:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SUCESSO;Ciclo de trade processado;46497;processar_ciclo_trade;0
+2026-04-23 20:22:39;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:22:43;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:22:48;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:22:52;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:22:56;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:01;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:05;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:09;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:13;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:18;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:22;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:26;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:35;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:39;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:43;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:48;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:52;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:23:56;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:00;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:05;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:09;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:13;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:17;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:21;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:26;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:34;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:38;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:43;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:48;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:52;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:24:56;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:00;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:04;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:09;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:13;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:17;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:21;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:25;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:34;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:38;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:42;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:47;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:51;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:55;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:25:59;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:04;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:08;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:12;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:16;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:20;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:25;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:29;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:33;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:37;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:41;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:45;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:50;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:54;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:26:58;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:27:02;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:27:06;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46497;processar_ciclo_trade;0
+2026-04-23 20:27:11;;buscar_mercado;SEM_MERCADO;Nenhum mercado aberto encontrado;;processar_ciclo_trade;0
+2026-04-23 20:27:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SUCESSO;Ciclo de trade processado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:26;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:34;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:38;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:42;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:47;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:51;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:55;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:27:59;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:05;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:10;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:14;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:20;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:24;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:36;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:40;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:44;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:48;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:52;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:28:56;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:01;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:05;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:09;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:14;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:18;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:22;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:26;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:35;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:39;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:43;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:47;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:51;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:29:55;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:00;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:04;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:08;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:12;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:16;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:21;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:25;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:29;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:33;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:37;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:41;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:45;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:50;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:54;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:30:59;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:03;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:08;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:12;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:16;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:20;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:24;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:29;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:33;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:37;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:41;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:45;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:31:49;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46500;processar_ciclo_trade;0
+2026-04-23 20:32:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:32:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:33:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:34:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:34:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:34:11;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:34:15;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:34:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46503;processar_ciclo_trade;0
+2026-04-23 20:34:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:28;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:45;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:34:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:44;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:35:57;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:05;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:28;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:36:45;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46503;processar_ciclo_trade;0
+2026-04-23 20:37:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:37:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:37:57;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:18;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:38:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:39:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:39:05;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:39:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:39:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46506;processar_ciclo_trade;0
+2026-04-23 20:39:18;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:26;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:39:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:40:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:11;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:15;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:28;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:45;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:41:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46506;processar_ciclo_trade;0
+2026-04-23 20:42:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:42:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:43:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:44:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:44:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:44:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:44:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46508;processar_ciclo_trade;0
+2026-04-23 20:44:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:44:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:45:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46508;processar_ciclo_trade;0
+2026-04-23 20:46:45;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:46:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:46:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:46:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:15;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:44;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:47:57;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:48:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:48:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46510;processar_ciclo_trade;0
+2026-04-23 20:48:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:18;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:44;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:48:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:05;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:26;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:49:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:50:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46510;processar_ciclo_trade;0
+2026-04-23 20:51:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:51:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:51:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:51:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:05;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:26;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:52:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:53:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:53:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:53:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46515;processar_ciclo_trade;0
+2026-04-23 20:53:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:53:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:11;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:15;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:28;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:45;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:54:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:55:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46515;processar_ciclo_trade;0
+2026-04-23 20:56:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:56:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:56:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:56:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:56:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:02;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:11;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:15;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:19;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:28;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:44;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:57:57;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:58:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:58:05;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:58:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46519;processar_ciclo_trade;0
+2026-04-23 20:58:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:18;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:58:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:05;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:18;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:26;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 20:59:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 21:00:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 21:00:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 21:00:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 21:00:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46519;processar_ciclo_trade;0
+2026-04-23 21:00:17;;buscar_mercado;SEM_MERCADO;Nenhum mercado aberto encontrado;;processar_ciclo_trade;0
+2026-04-23 21:00:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SUCESSO;Ciclo de trade processado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:33;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:37;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:41;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:46;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:50;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:55;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:00:59;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:03;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:07;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:11;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:15;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:20;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:24;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:28;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:32;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:37;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:41;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:45;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:49;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:53;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:01:58;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:02;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:07;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:11;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:15;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:20;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:24;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:28;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:32;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:36;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:41;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:45;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:49;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:53;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:02:57;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:02;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:06;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:10;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:14;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:18;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:23;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:27;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:31;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:35;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:39;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:44;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:48;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:52;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:03:56;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:00;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:04;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:09;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:13;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:17;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:21;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:25;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:30;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:34;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:38;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:42;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:46;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:51;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:55;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:04:59;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:05:03;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:05:07;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:05:11;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:05:16;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:05:20;;controle_mercado;EM_ANDAMENTO;Já existe ordem em acompanhamento para esse mercado;46522;processar_ciclo_trade;0
+2026-04-23 21:05:41;;erro_ciclo;ERRO;400 Client Error: Bad Request for url: https://app.palpita.io/api/v1/orders/1898805;;processar_ciclo_trade;0
+2026-04-23 21:06:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SEM_ENTRADA;Ciclo de trade processado;46526;processar_ciclo_trade;0
+2026-04-23 21:06:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;ciclo_finalizado;SEM_ENTRADA;Ciclo de trade processado;46526;processar_ciclo_trade;0
+2026-04-23 21:06:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:06:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:06:44;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:06:49;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:06:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:06:57;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:01;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:10;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:14;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:18;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:27;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46526;processar_ciclo_trade;0
+2026-04-23 21:07:48;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:07:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:07:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:26;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:08:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:00;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:39;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:52;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:09:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46526;processar_ciclo_trade;0
+2026-04-23 21:10:00;;buscar_mercado;SEM_MERCADO;Nenhum mercado aberto encontrado;;processar_ciclo_trade;0
+2026-04-23 21:11:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:09;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:13;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:17;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:30;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:51;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:55;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:11:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:04;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:08;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:25;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46530;processar_ciclo_trade;0
+2026-04-23 21:12:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:12:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:12:41;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:12:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:12:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:12:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:12:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:33;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:37;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:42;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:46;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:13:59;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:14:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:14:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:14:12;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:14:16;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:14:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46530;processar_ciclo_trade;0
+2026-04-23 21:15:23;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:28;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:36;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:40;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:44;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:50;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:54;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:15:58;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:03;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:07;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:11;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:15;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:20;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:24;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:34;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0

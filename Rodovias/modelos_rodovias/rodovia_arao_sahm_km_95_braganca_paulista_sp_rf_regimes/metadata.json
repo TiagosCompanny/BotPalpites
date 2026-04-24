@@ -91,20 +91,20 @@
     "modelo_escolhido": "rf_regimes_clusters_lags",
     "split": "temporal_80_20",
     "metricas_teste": {
-        "accuracy": 0.628514,
-        "auc": 0.670886,
-        "precision_mais": 0.695876,
-        "recall_mais": 0.517241,
-        "f1_mais": 0.593407,
-        "f1_ate": 0.658041,
-        "macro_f1": 0.625724,
-        "baseline_majoritaria": 0.524096,
-        "ganho_vs_baseline": 0.104418,
-        "taxa_mais_teste": 0.524096
+        "accuracy": 0.642857,
+        "auc": 0.688059,
+        "precision_mais": 0.632911,
+        "recall_mais": 0.704225,
+        "f1_mais": 0.666667,
+        "f1_ate": 0.615385,
+        "macro_f1": 0.641026,
+        "baseline_majoritaria": 0.507143,
+        "ganho_vs_baseline": 0.135714,
+        "taxa_mais_teste": 0.507143
     },
     "quantidades": {
-        "total_modelagem": 2489,
-        "treino": 1991,
-        "teste": 498
+        "total_modelagem": 3500,
+        "treino": 2800,
+        "teste": 700
     }
 }
