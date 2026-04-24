@@ -46,20 +46,20 @@
     "modelo_escolhido": "rf_producao_friendly_sem_lags",
     "split": "temporal_80_20",
     "metricas_teste": {
-        "accuracy": 0.634424,
-        "auc": 0.694403,
-        "precision_mais": 0.633423,
-        "recall_mais": 0.660112,
-        "f1_mais": 0.646492,
-        "f1_ate": 0.621502,
-        "macro_f1": 0.633997,
-        "baseline_majoritaria": 0.506401,
-        "ganho_vs_baseline": 0.128023,
-        "taxa_mais_teste": 0.506401
+        "accuracy": 0.64753,
+        "auc": 0.70575,
+        "precision_mais": 0.636132,
+        "recall_mais": 0.673854,
+        "f1_mais": 0.65445,
+        "f1_ate": 0.640327,
+        "macro_f1": 0.647389,
+        "baseline_majoritaria": 0.504673,
+        "ganho_vs_baseline": 0.142857,
+        "taxa_mais_teste": 0.495327
     },
     "quantidades": {
-        "total_modelagem": 3512,
-        "treino": 2809,
-        "teste": 703
+        "total_modelagem": 3745,
+        "treino": 2996,
+        "teste": 749
     }
 }

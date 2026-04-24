@@ -84,17 +84,17 @@ CATALOGO_RODOVIAS = {
 CONFIG_ENTRADA_RODOVIA = {
     "Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).": {
         "threshold_confianca": 0.60,
-        "odd_minima_base": 2.05,
+        "odd_minima_base": 2.30,
         "degrau_odds": [0.25, 0.10, 0.00, -0.10],
     },
     "Doutor Manoel Hyppolito Rego, KM 83 — Caraguatatuba (SP).": {
         "threshold_confianca": 0.62,
-        "odd_minima_base": 1.95,
+        "odd_minima_base": 2.30,
         "degrau_odds": [0.25, 0.10, 0.00, -0.10],
     },
     "Floriano Rodrigues Pinheiro, KM 26 — Pindamonhangaba (SP).": {
         "threshold_confianca": 0.60,
-        "odd_minima_base": 2.05,
+        "odd_minima_base": 2.30,
         "degrau_odds": [0.25, 0.10, 0.00, -0.10],
     },
 }
@@ -847,6 +847,23 @@ def registrar_execucao(rodovia, etapa, status, mensagem, market_id="", nome_meto
         print(f"Falha ao registrar log de execução: {erro_log}")
 
 
+def calcular_valor_total_por_saldo(saldo):
+    if saldo is None:
+        return 1.00
+
+    saldo = float(saldo)
+
+    percentual_banca = 0.05
+    valor_minimo = 1.00
+
+    valor = saldo * percentual_banca
+
+    if valor < valor_minimo:
+        return valor_minimo
+
+    return valor
+
+
 def processar_ciclo_trade():
     global market_id_em_andamento, order_id_em_andamento
 
@@ -978,14 +995,11 @@ def processar_ciclo_trade():
                 confianca=float(resultado["confianca"]),
                 threshold=float(threshold_confianca),
                 meta_referencia=str(resultado["meta_referencia"]),
-                odd_minima_aceita=float(montar_odds_tentativa(rodovia_mercado, resultado["confianca"])[0]),
+                odd_minima_aceita=float(
+                    montar_odds_tentativa(rodovia_mercado, resultado["confianca"])[0]
+                ),
             )
         )
-
-        # 🔒 NOVA REGRA AQUI
-        # if not resultado["previsao"].startswith("Mais de"):
-        #    log_unico("status", "Não apostar, previsão não é 'Mais de'")
-        #    return
 
         log_unico(
             "previsao",
@@ -1041,11 +1055,13 @@ def processar_ciclo_trade():
             ),
         )
 
+        valor_total = calcular_valor_total_por_saldo(saldo_antes)
+
         resposta_criacao_ordem = executar_entrada_escalonada(
             selection_id=selection_id,
-            valor_total=1,
+            valor_total=valor_total,
             odds_tentativa=odds_tentativa,
-            segundos_espera_por_tentativa=3,
+            segundos_espera_por_tentativa=2,
             usar_market_no_final=False,
         )
 
@@ -1094,9 +1110,7 @@ def processar_ciclo_trade():
 
 if __name__ == "__main__":
 
-    # schedule.every(5).seconds.until("22:00").do(processar_ciclo_trade)
-    schedule.every(3).seconds.do(processar_ciclo_trade)
-    processar_ciclo_trade()
+    schedule.every(0.5).seconds.do(processar_ciclo_trade)
 
     while True:
         schedule.run_pending()
