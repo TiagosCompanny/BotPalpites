@@ -17,7 +17,6 @@ from sklearn.metrics import (
     classification_report,
 )
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.cluster import KMeans
 from Utils import LogService, TreinamentoLog
 
 
@@ -52,7 +51,6 @@ CATALOGO_RODOVIAS = {
     },
 }
 
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
 FEATURES_PRODUCAO = [
     "meta_num",
     "fim_semana",
@@ -93,8 +91,6 @@ FEATURES_PRODUCAO = [
     "interacao_meta_umidade",
 ]
 
-=======
->>>>>>> main
 log_service = LogService()
 
 
@@ -423,11 +419,7 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
         TreinamentoLog(
             data_hora=LogService.agora_str(),
             rodovia=rodovia_identificacao,
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
             nome_modelo="rf_producao_friendly_sem_lags",
-=======
-            nome_modelo="rf_regimes_clusters_lags",
->>>>>>> main
             versao_modelo="v1",
             algoritmo="RandomForestClassifier",
             arquivo_base=str(caminho_excel),
@@ -444,12 +436,6 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
             baseline=float(metricas["baseline_majoritaria"]),
         )
     )
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
-=======
-
-
-if __name__ == "__main__":
->>>>>>> main
 
 
 if __name__ == "__main__":
@@ -470,11 +456,7 @@ if __name__ == "__main__":
                 TreinamentoLog(
                     data_hora=LogService.agora_str(),
                     rodovia=config_erro.get("rodovia_identificacao", rodovia_chave),
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
                     nome_modelo="rf_producao_friendly_sem_lags",
-=======
-                    nome_modelo="rf_regimes_clusters_lags",
->>>>>>> main
                     versao_modelo="v1",
                     algoritmo="RandomForestClassifier",
                     arquivo_base=str(ARQUIVO_BASE),
@@ -491,19 +473,3 @@ if __name__ == "__main__":
                     baseline=0.0,
                 )
             )
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
-=======
-
-    #braganca_paulista
-    #caraguatatuba
-    #pindamonhangaba
-    """
-    RODOVIA_CHAVE = "braganca_paulista"
-    treinar_modelo_rodovia(
-        rodovia_chave=RODOVIA_CHAVE,
-        caminho_excel=ARQUIVO_BASE
-    )
-    
-    """
-    
->>>>>>> main
