@@ -973,11 +973,7 @@ def processar_ciclo_trade():
                 rodovia=rodovia_mercado,
                 market_id=str(market_id),
                 selection_id=None,
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
                 nome_modelo="rf_producao_friendly_sem_lags",
-=======
-                nome_modelo="rf_regimes_clusters_lags",
->>>>>>> main
                 classe_prevista=resultado["previsao"],
                 confianca=float(resultado["confianca"]),
                 threshold=float(threshold_confianca),
