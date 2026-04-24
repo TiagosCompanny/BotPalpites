@@ -1,9 +1,0 @@
-data_hora;rodovia;market_id;selection_id;tipo_ordem;direcao_aposta;stake;odd_solicitada;ordem_enviada;ordem_executada;status_ordem;order_id
-2026-04-23 20:08:31;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46484;92429;;BUY;1.0;2.4;True;False;NAO_EXECUTOU;
-2026-04-23 20:08:56;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46484;92429;;BUY;1.0;2.4;True;False;NAO_EXECUTOU;
-2026-04-23 20:09:22;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46484;92429;;BUY;1.0;2.4;True;False;NAO_EXECUTOU;
-2026-04-23 20:22:35;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46497;92455;LIMIT;BUY;1.0;2.4;True;True;FILLED;1897461
-2026-04-23 20:27:21;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46500;92461;LIMIT;BUY;1.0;2.4;True;True;FILLED;1897597
-2026-04-23 21:00:29;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46522;92505;LIMIT;BUY;1.0;2.4;True;True;FILLED;1898636
-2026-04-23 21:06:06;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46526;92513;;BUY;1.0;2.4;True;False;NAO_EXECUTOU;
-2026-04-23 21:06:32;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;46526;92513;;BUY;1.0;2.4;True;False;NAO_EXECUTOU;
