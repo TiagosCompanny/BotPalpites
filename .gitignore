@@ -23,3 +23,7 @@ venv/
 
 # pasta específica do seu projeto
 Passagens/modelos_passagens/
+
+# Logs do bot de rodovias
+Rodovias/Utils/LogApostasRodovias/
+*.log
