@@ -17,19 +17,18 @@ from sklearn.metrics import (
     classification_report,
 )
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.cluster import KMeans
-from Utils import LogService, TreinamentoLog
 
 
 BASE_DIR = Path(__file__).resolve().parent
 ARQUIVO_BASE = BASE_DIR / "DadosRodovias" / "dados_todas_rodovias.xlsx"
-MODELOS_DIR = BASE_DIR / "modelos_rodovias"
+MODELOS_DIR = BASE_DIR / "modelos_rodovias_producao_friendly"
 
 CATALOGO_RODOVIAS = {
     "braganca_paulista": {
         "rodovia_identificacao": "Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).",
         "pasta_saida": str(
-            MODELOS_DIR / "rodovia_arao_sahm_km_95_braganca_paulista_sp_rf_regimes"
+            MODELOS_DIR
+            / "rodovia_arao_sahm_km_95_braganca_paulista_sp_rf_producao_friendly"
         ),
         "filtro_rodovia_legado": "Rodovia Arão Sahm",
         "nome_exibicao": "BRAGANÇA PAULISTA",
@@ -37,7 +36,8 @@ CATALOGO_RODOVIAS = {
     "caraguatatuba": {
         "rodovia_identificacao": "Doutor Manoel Hyppolito Rego, KM 83 — Caraguatatuba (SP).",
         "pasta_saida": str(
-            MODELOS_DIR / "doutor_manoel_hyppolito_rego_km_83_caraguatatuba_sp_rf_regimes"
+            MODELOS_DIR
+            / "doutor_manoel_hyppolito_rego_km_83_caraguatatuba_sp_rf_producao_friendly"
         ),
         "filtro_rodovia_legado": "Doutor Manoel Hyppolito Rego",
         "nome_exibicao": "CARAGUATATUBA",
@@ -45,14 +45,15 @@ CATALOGO_RODOVIAS = {
     "pindamonhangaba": {
         "rodovia_identificacao": "Floriano Rodrigues Pinheiro, KM 26 — Pindamonhangaba (SP).",
         "pasta_saida": str(
-            MODELOS_DIR / "floriano_rodrigues_pinheiro_km_26_pindamonhangaba_sp_rf_regimes"
+            MODELOS_DIR
+            / "floriano_rodrigues_pinheiro_km_26_pindamonhangaba_sp_rf_producao_friendly"
         ),
         "filtro_rodovia_legado": "Floriano Rodrigues Pinheiro",
         "nome_exibicao": "PINDAMONHANGABA",
     },
 }
 
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
+
 FEATURES_PRODUCAO = [
     "meta_num",
     "fim_semana",
@@ -92,10 +93,6 @@ FEATURES_PRODUCAO = [
     "interacao_meta_temperatura",
     "interacao_meta_umidade",
 ]
-
-=======
->>>>>>> main
-log_service = LogService()
 
 
 def parse_float(x):
@@ -295,7 +292,7 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
     df = pd.read_excel(caminho_excel)
     df = preparar_base(df, config)
 
-    features = [c for c in FEATURES_PRODUCAO if c in df.columns]
+    colunas_disponiveis = [c for c in FEATURES_PRODUCAO if c in df.columns]
 
     df_model = df.dropna(subset=["alvo_mais", "meta_num"]).copy()
 
@@ -313,10 +310,10 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
     if teste["alvo_mais"].nunique() < 2:
         raise ValueError("Teste sem duas classes.")
 
-    X_treino = treino[features]
+    X_treino = treino[colunas_disponiveis]
     y_treino = treino["alvo_mais"]
 
-    X_teste = teste[features]
+    X_teste = teste[colunas_disponiveis]
     y_teste = teste["alvo_mais"]
 
     modelo = Pipeline(
@@ -344,7 +341,7 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
 
     metricas = calcular_metricas(y_teste, prob)
 
-    print(f"\n=== RESULTADO FINAL - {nome_exibicao} ===")
+    print(f"\n=== RESULTADO PRODUCAO-FRIENDLY - {nome_exibicao} ===")
     print(f"Base total: {n}")
     print(f"Base treino: {len(treino)}")
     print(f"Base teste: {len(teste)}")
@@ -363,11 +360,8 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
 
     modelo_final = modelo.named_steps["model"]
     importancias = pd.DataFrame(
-        {"variavel": features, "importancia": modelo_final.feature_importances_}
+        {"variavel": colunas_disponiveis, "importancia": modelo_final.feature_importances_}
     ).sort_values(by="importancia", ascending=False)
-
-    print("\n=== IMPORTÂNCIA DAS VARIÁVEIS ===")
-    print(importancias.head(30))
 
     caminho_modelo = os.path.join(pasta_saida, "modelo.joblib")
     caminho_metadata = os.path.join(pasta_saida, "metadata.json")
@@ -376,7 +370,7 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
 
     bundle = {
         "modelo": modelo,
-        "features": features,
+        "features": colunas_disponiveis,
         "rodovia_identificacao": rodovia_identificacao,
         "rodovia_chave": rodovia_chave,
     }
@@ -385,7 +379,7 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
     metadata = {
         "rodovia_chave": rodovia_chave,
         "rodovia_identificacao": rodovia_identificacao,
-        "features": features,
+        "features": colunas_disponiveis,
         "target": "alvo_mais",
         "classe_1": "Mais de X",
         "classe_0": "Até X",
@@ -419,91 +413,14 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
     print(f"Predições salvas em: {caminho_predicoes}")
     print(f"Importâncias salvas em: {caminho_importancias}")
 
-    log_service.registrar_treinamento(
-        TreinamentoLog(
-            data_hora=LogService.agora_str(),
-            rodovia=rodovia_identificacao,
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
-            nome_modelo="rf_producao_friendly_sem_lags",
-=======
-            nome_modelo="rf_regimes_clusters_lags",
->>>>>>> main
-            versao_modelo="v1",
-            algoritmo="RandomForestClassifier",
-            arquivo_base=str(caminho_excel),
-            quantidade_registros=int(n),
-            quantidade_treino=int(len(treino)),
-            quantidade_teste=int(len(teste)),
-            campos_utilizados=",".join(features),
-            campo_alvo="alvo_mais",
-            balanceamento_aplicado="class_weight=balanced_subsample",
-            acuracia=float(metricas["accuracy"]),
-            macro_f1=float(metricas["macro_f1"]),
-            f1_mais=float(metricas["f1_mais"]),
-            f1_ate=float(metricas["f1_ate"]),
-            baseline=float(metricas["baseline_majoritaria"]),
-        )
-    )
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
-=======
-
-
-if __name__ == "__main__":
->>>>>>> main
-
 
 if __name__ == "__main__":
     for rodovia_chave in CATALOGO_RODOVIAS.keys():
-        print(f"\n\n==============================")
-        print(f"INICIANDO MODELAGEM PARA: {rodovia_chave}")
-        print(f"==============================\n")
+        print("\n\n==============================")
+        print(f"INICIANDO MODELAGEM PRODUCAO-FRIENDLY PARA: {rodovia_chave}")
+        print("==============================\n")
 
         try:
-            treinar_modelo_rodovia(
-                rodovia_chave=rodovia_chave,
-                caminho_excel=ARQUIVO_BASE,
-            )
+            treinar_modelo_rodovia(rodovia_chave=rodovia_chave, caminho_excel=ARQUIVO_BASE)
         except Exception as e:
             print(f"Erro ao modelar rodovia '{rodovia_chave}': {e}")
-            config_erro = CATALOGO_RODOVIAS.get(rodovia_chave, {})
-            log_service.registrar_treinamento(
-                TreinamentoLog(
-                    data_hora=LogService.agora_str(),
-                    rodovia=config_erro.get("rodovia_identificacao", rodovia_chave),
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
-                    nome_modelo="rf_producao_friendly_sem_lags",
-=======
-                    nome_modelo="rf_regimes_clusters_lags",
->>>>>>> main
-                    versao_modelo="v1",
-                    algoritmo="RandomForestClassifier",
-                    arquivo_base=str(ARQUIVO_BASE),
-                    quantidade_registros=0,
-                    quantidade_treino=0,
-                    quantidade_teste=0,
-                    campos_utilizados="",
-                    campo_alvo="alvo_mais",
-                    balanceamento_aplicado=f"erro: {e}",
-                    acuracia=0.0,
-                    macro_f1=0.0,
-                    f1_mais=0.0,
-                    f1_ate=0.0,
-                    baseline=0.0,
-                )
-            )
-<<<<<<< codex/add-log-management-calls-to-project-3whd4n
-=======
-
-    #braganca_paulista
-    #caraguatatuba
-    #pindamonhangaba
-    """
-    RODOVIA_CHAVE = "braganca_paulista"
-    treinar_modelo_rodovia(
-        rodovia_chave=RODOVIA_CHAVE,
-        caminho_excel=ARQUIVO_BASE
-    )
-    
-    """
-    
->>>>>>> main
