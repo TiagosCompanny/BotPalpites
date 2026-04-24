@@ -350,7 +350,6 @@ def prever_aposta(
         )
 
     item = catalogo[rodovia_identificacao]
-    metadata = item["metadata"]
     bundle = joblib.load(item["modelo"])
 
     if not isinstance(bundle, dict) or "modelo" not in bundle:
@@ -463,9 +462,12 @@ def prever_aposta(
         entrada_dict["meta_num"] * entrada_dict["umidade_relativa"]
     )
 
-    for col in features:
-        if col not in entrada_dict:
-            entrada_dict[col] = np.nan
+    colunas_faltantes = [col for col in features if col not in entrada_dict]
+    if colunas_faltantes:
+        raise ValueError(
+            "A entrada de previsão não possui todas as features esperadas pelo modelo. "
+            f"Faltando: {colunas_faltantes}"
+        )
 
     entrada = pd.DataFrame([entrada_dict])[features]
 
@@ -971,7 +973,11 @@ def processar_ciclo_trade():
                 rodovia=rodovia_mercado,
                 market_id=str(market_id),
                 selection_id=None,
+<<<<<<< codex/add-log-management-calls-to-project-3whd4n
+                nome_modelo="rf_producao_friendly_sem_lags",
+=======
                 nome_modelo="rf_regimes_clusters_lags",
+>>>>>>> main
                 classe_prevista=resultado["previsao"],
                 confianca=float(resultado["confianca"]),
                 threshold=float(threshold_confianca),
