@@ -710,3 +710,4 @@ data_hora;rodovia;etapa;status;mensagem;market_id;nome_metodo;tempo_execucao_ms
 2026-04-23 21:16:38;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
 2026-04-23 21:16:43;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
 2026-04-23 21:16:47;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_primeiro_minuto;FORA_JANELA;Mercado já passou do primeiro minuto de abertura;46533;processar_ciclo_trade;0
+2026-04-23 21:16:53;Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).;validar_janela_aposta;BLOQUEADO;Não pode enviar ordem para esse mercado;46533;processar_ciclo_trade;0
