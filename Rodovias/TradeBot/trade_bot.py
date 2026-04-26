@@ -134,6 +134,8 @@ if not api_key or not api_secret:
 
 market_id_em_andamento = None
 order_id_em_andamento = None
+valor_executado_por_mercado = {}
+valor_total_alvo_por_mercado = {}
 
 coordenadas_rodovias = {
     ("Rodovia Arão Sahm", 95): {"latitude": -22.9256, "longitude": -46.5529},
@@ -194,7 +196,7 @@ def obter_saldo():
     url = "https://app.palpita.io/api/v1/balance"
 
     try:
-        response = requests.get(url, headers=headers, timeout=30)
+        response = requests.get(url, headers=headers, timeout=20)
         response.raise_for_status()
         saldo = response.json()["data"][0]["amount"]
         return saldo
@@ -217,7 +219,7 @@ def obter_mercado_carros_aberto():
     }
     headers = {"Accept": "application/json"}
 
-    response = requests.get(url, headers=headers, params=params, timeout=30)
+    response = requests.get(url, headers=headers, params=params, timeout=20)
     response.raise_for_status()
 
     resposta = response.json()
@@ -291,7 +293,7 @@ def buscar_clima_atual(latitude, longitude):
         "timezone": "America/Sao_Paulo",
     }
 
-    response = session.get(url, params=params, timeout=60)
+    response = session.get(url, params=params, timeout=20)
     response.raise_for_status()
     dados = response.json()
 
@@ -576,7 +578,7 @@ def criar_ordem_limit_buy(selection_id, valor_total, odd_minima):
         "https://app.palpita.io/api/v1/orders",
         headers=headers,
         json=payload,
-        timeout=30,
+        timeout=20,
     )
 
     print("PAYLOAD:", payload)
@@ -593,7 +595,7 @@ def consultar_ordem(order_id):
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
 
     response = requests.get(
-        f"https://app.palpita.io/api/v1/orders/{order_id}", headers=headers, timeout=30
+        f"https://app.palpita.io/api/v1/orders/{order_id}", headers=headers, timeout=20
     )
 
     print("CONSULTAR ORDEM STATUS:", response.status_code)
@@ -609,7 +611,7 @@ def cancelar_ordem(order_id):
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
 
     response = requests.delete(
-        f"https://app.palpita.io/api/v1/orders/{order_id}", headers=headers, timeout=30
+        f"https://app.palpita.io/api/v1/orders/{order_id}", headers=headers, timeout=20
     )
 
     print("CANCELAR ORDEM STATUS:", response.status_code)
@@ -639,7 +641,7 @@ def criar_ordem_market_buy(selection_id, valor_total):
         "https://app.palpita.io/api/v1/orders",
         headers=headers,
         json=payload,
-        timeout=30,
+        timeout=20,
     )
 
     print("MARKET BUY PAYLOAD:", payload)
@@ -654,8 +656,15 @@ def obter_status_e_preenchimento(resposta_ordem):
     data = resposta_ordem.get("data", resposta_ordem)
 
     status = data.get("status")
-    filled_amount = float(data.get("filledAmount", 0) or 0)
+
     amount = float(data.get("amount", 0) or 0)
+
+    if "amountRemaining" in data:
+        amount_remaining = float(data.get("amountRemaining", amount) or 0)
+        filled_amount = amount - amount_remaining
+    else:
+        filled_amount = float(data.get("filledAmount", 0) or 0)
+        amount_remaining = amount - filled_amount
 
     return status, filled_amount, amount
 
@@ -669,9 +678,120 @@ def executar_entrada_escalonada(
 ):
     historico = []
 
+    valor_total = float(valor_total)
+    valor_executado_total = 0.0
+    amount_executado_total = 0.0
+    order_ids_executados = []
+
+    valor_minimo_restante = 1.00
+    tolerancia_valor = 0.01
+
+    def extrair_price(resposta_ordem, odd_fallback):
+        data = resposta_ordem.get("data", resposta_ordem)
+        price = data.get("price")
+
+        if price is not None:
+            return float(price)
+
+        return round(1 / float(odd_fallback), 2)
+
+    def registrar_execucao(
+        tipo,
+        order_id,
+        odd,
+        status,
+        filled_amount,
+        amount,
+        price,
+    ):
+        nonlocal valor_executado_total
+        nonlocal amount_executado_total
+
+        filled_amount = float(filled_amount or 0)
+        amount = float(amount or 0)
+        price = float(price or 0)
+
+        valor_executado = round(filled_amount * price, 4)
+
+        if filled_amount > 0:
+            valor_executado_total = round(valor_executado_total + valor_executado, 4)
+            amount_executado_total = round(amount_executado_total + filled_amount, 4)
+
+            if order_id not in order_ids_executados:
+                order_ids_executados.append(order_id)
+
+        valor_restante = round(valor_total - valor_executado_total, 4)
+
+        historico.append(
+            {
+                "tipo": tipo,
+                "order_id": order_id,
+                "odd_tentada": odd,
+                "status": status,
+                "filled_amount": filled_amount,
+                "amount": amount,
+                "price": price,
+                "valor_executado": valor_executado,
+                "valor_executado_total": valor_executado_total,
+                "valor_restante": valor_restante,
+            }
+        )
+
+    def montar_retorno(
+        sucesso,
+        tipo_execucao,
+        order_id,
+        odd_executada,
+        status_final,
+        resposta_final=None,
+    ):
+        valor_restante = round(valor_total - valor_executado_total, 4)
+
+        if valor_restante <= tolerancia_valor:
+            valor_restante = 0.0
+
+        return {
+            "sucesso": sucesso,
+            "tipo_execucao": tipo_execucao,
+            "order_id": order_id,
+            "order_ids": order_ids_executados,
+            "odd_executada": odd_executada,
+            "status_final": status_final,
+            "valor_total": valor_total,
+            "valor_executado_total": valor_executado_total,
+            "valor_restante": valor_restante,
+            "amount_executado_total": amount_executado_total,
+            "historico": historico,
+            "resposta_final": resposta_final,
+        }
+
     for odd in odds_tentativa:
+        valor_restante = round(valor_total - valor_executado_total, 4)
+
+        if valor_restante <= tolerancia_valor:
+            return montar_retorno(
+                sucesso=True,
+                tipo_execucao="LIMIT_COMPLETO",
+                order_id=order_ids_executados[-1] if order_ids_executados else None,
+                odd_executada=odd,
+                status_final="VALOR_TOTAL_EXECUTADO",
+                resposta_final=historico[-1] if historico else None,
+            )
+
+        if valor_executado_total > 0 and valor_restante < valor_minimo_restante:
+            return montar_retorno(
+                sucesso=True,
+                tipo_execucao="LIMIT_PARTIAL_RESTANTE_MENOR_QUE_MINIMO",
+                order_id=order_ids_executados[-1] if order_ids_executados else None,
+                odd_executada=odd,
+                status_final="PARCIAL_RESTANTE_PEQUENO",
+                resposta_final=historico[-1] if historico else None,
+            )
+
         resposta_ordem = criar_ordem_limit_buy(
-            selection_id=selection_id, valor_total=valor_total, odd_minima=odd
+            selection_id=selection_id,
+            valor_total=valor_restante,
+            odd_minima=odd,
         )
 
         data_ordem = resposta_ordem.get("data", {})
@@ -684,46 +804,124 @@ def executar_entrada_escalonada(
 
         detalhe_ordem = consultar_ordem(order_id)
         status, filled_amount, amount = obter_status_e_preenchimento(detalhe_ordem)
+        price = extrair_price(detalhe_ordem, odd)
 
-        historico.append(
-            {
-                "tipo": "LIMIT",
-                "order_id": order_id,
-                "odd_tentada": odd,
-                "status": status,
-                "filled_amount": filled_amount,
-                "amount": amount,
-            }
+        registrar_execucao(
+            tipo="LIMIT_CONSULTA",
+            order_id=order_id,
+            odd=odd,
+            status=status,
+            filled_amount=filled_amount,
+            amount=amount,
+            price=price,
         )
 
         if status == "FILLED":
-            return {
-                "sucesso": True,
-                "tipo_execucao": "LIMIT",
-                "order_id": order_id,
-                "odd_executada": odd,
-                "status_final": status,
-                "historico": historico,
-                "resposta_final": detalhe_ordem,
-            }
+            valor_restante = round(valor_total - valor_executado_total, 4)
+
+            if valor_restante <= tolerancia_valor:
+                return montar_retorno(
+                    sucesso=True,
+                    tipo_execucao="LIMIT_COMPLETO",
+                    order_id=order_id,
+                    odd_executada=odd,
+                    status_final="VALOR_TOTAL_EXECUTADO",
+                    resposta_final=detalhe_ordem,
+                )
+
+            continue
 
         if status in ["OPEN", "PARTIALLY_FILLED"]:
-            cancelar_ordem(order_id)
+            resposta_cancelamento = None
 
-            if filled_amount > 0:
-                return {
-                    "sucesso": True,
-                    "tipo_execucao": "LIMIT_PARTIAL",
-                    "order_id": order_id,
-                    "odd_executada": odd,
-                    "status_final": status,
-                    "historico": historico,
-                    "resposta_final": detalhe_ordem,
-                }
+            try:
+                resposta_cancelamento = cancelar_ordem(order_id)
+            except requests.exceptions.HTTPError as e:
+                mensagem_erro = ""
+
+                try:
+                    mensagem_erro = e.response.text
+                except Exception:
+                    mensagem_erro = str(e)
+
+                if (
+                    "Apenas ordens abertas podem ser canceladas" in mensagem_erro
+                    or "Ordem não encontrada ou já encerrada" in mensagem_erro
+                ):
+                    detalhe_pos_erro = consultar_ordem(order_id)
+                    status_pos_erro, filled_pos_erro, amount_pos_erro = (
+                        obter_status_e_preenchimento(detalhe_pos_erro)
+                    )
+                    price_pos_erro = extrair_price(detalhe_pos_erro, odd)
+
+                    preenchimento_novo = max(
+                        0.0,
+                        float(filled_pos_erro) - float(filled_amount),
+                    )
+
+                    registrar_execucao(
+                        tipo="LIMIT_RECONSULTA",
+                        order_id=order_id,
+                        odd=odd,
+                        status=status_pos_erro,
+                        filled_amount=preenchimento_novo,
+                        amount=amount_pos_erro,
+                        price=price_pos_erro,
+                    )
+
+                    continue
+
+                raise
+
+            if resposta_cancelamento is not None:
+                status_cancelamento, filled_cancelamento, amount_cancelamento = (
+                    obter_status_e_preenchimento(resposta_cancelamento)
+                )
+                price_cancelamento = extrair_price(resposta_cancelamento, odd)
+
+                preenchimento_novo = max(
+                    0.0,
+                    float(filled_cancelamento) - float(filled_amount),
+                )
+
+                registrar_execucao(
+                    tipo="LIMIT_CANCELAMENTO",
+                    order_id=order_id,
+                    odd=odd,
+                    status=status_cancelamento,
+                    filled_amount=preenchimento_novo,
+                    amount=amount_cancelamento,
+                    price=price_cancelamento,
+                )
+
+            continue
+
+    valor_restante = round(valor_total - valor_executado_total, 4)
+
+    if valor_executado_total > 0:
+        if valor_restante <= tolerancia_valor:
+            return montar_retorno(
+                sucesso=True,
+                tipo_execucao="LIMIT_COMPLETO",
+                order_id=order_ids_executados[-1] if order_ids_executados else None,
+                odd_executada=None,
+                status_final="VALOR_TOTAL_EXECUTADO",
+                resposta_final=historico[-1] if historico else None,
+            )
+
+        return montar_retorno(
+            sucesso=True,
+            tipo_execucao="LIMIT_PARTIAL",
+            order_id=order_ids_executados[-1] if order_ids_executados else None,
+            odd_executada=None,
+            status_final="EXECUTOU_PARCIAL",
+            resposta_final=historico[-1] if historico else None,
+        )
 
     if usar_market_no_final:
         resposta_market = criar_ordem_market_buy(
-            selection_id=selection_id, valor_total=valor_total
+            selection_id=selection_id,
+            valor_total=valor_total,
         )
 
         data_market = resposta_market.get("data", {})
@@ -735,6 +933,12 @@ def executar_entrada_escalonada(
                 "order_id": order_id_market,
                 "odd_tentada": None,
                 "status": "ENVIADA",
+                "filled_amount": 0,
+                "amount": valor_total,
+                "price": None,
+                "valor_executado": 0,
+                "valor_executado_total": valor_executado_total,
+                "valor_restante": round(valor_total - valor_executado_total, 4),
             }
         )
 
@@ -742,8 +946,13 @@ def executar_entrada_escalonada(
             "sucesso": True,
             "tipo_execucao": "MARKET",
             "order_id": order_id_market,
+            "order_ids": order_ids_executados + [order_id_market],
             "odd_executada": None,
             "status_final": "ENVIADA",
+            "valor_total": valor_total,
+            "valor_executado_total": valor_executado_total,
+            "valor_restante": round(valor_total - valor_executado_total, 4),
+            "amount_executado_total": amount_executado_total,
             "historico": historico,
             "resposta_final": resposta_market,
         }
@@ -752,8 +961,13 @@ def executar_entrada_escalonada(
         "sucesso": False,
         "tipo_execucao": None,
         "order_id": None,
+        "order_ids": [],
         "odd_executada": None,
         "status_final": "NAO_EXECUTOU",
+        "valor_total": valor_total,
+        "valor_executado_total": 0.0,
+        "valor_restante": valor_total,
+        "amount_executado_total": 0.0,
         "historico": historico,
         "resposta_final": None,
     }
@@ -865,7 +1079,10 @@ def calcular_valor_total_por_saldo(saldo):
 
 
 def processar_ciclo_trade():
-    global market_id_em_andamento, order_id_em_andamento
+    global market_id_em_andamento
+    global order_id_em_andamento
+    global valor_executado_por_mercado
+    global valor_total_alvo_por_mercado
 
     saldo_antes = obter_saldo()
 
@@ -1039,7 +1256,8 @@ def processar_ciclo_trade():
         selection_id = obter_selection_id_da_previsao(mercado, resultado)
 
         odds_tentativa = montar_odds_tentativa(
-            rodovia=rodovia_mercado, confianca=resultado["confianca"]
+            rodovia=rodovia_mercado,
+            confianca=resultado["confianca"],
         )
 
         log_unico(
@@ -1055,17 +1273,70 @@ def processar_ciclo_trade():
             ),
         )
 
-        valor_total = calcular_valor_total_por_saldo(saldo_antes)
+        if market_id not in valor_total_alvo_por_mercado:
+            valor_total_alvo_por_mercado[market_id] = float(
+                calcular_valor_total_por_saldo(saldo_antes)
+            )
+
+        valor_total_alvo = float(valor_total_alvo_por_mercado.get(market_id, 0.0))
+        valor_ja_executado = float(valor_executado_por_mercado.get(market_id, 0.0))
+        valor_restante_para_executar = round(valor_total_alvo - valor_ja_executado, 4)
+
+        if valor_restante_para_executar <= 0.01:
+            market_id_em_andamento = market_id
+            order_id_em_andamento = None
+
+            log_unico(
+                "status",
+                f"Mercado {market_id} já teve o valor alvo executado. Não enviar nova.",
+            )
+
+            registrar_execucao(
+                rodovia=rodovia_mercado,
+                etapa="controle_valor",
+                status="VALOR_TOTAL_EXECUTADO",
+                mensagem="Valor alvo já executado para esse mercado",
+                market_id=market_id,
+                nome_metodo="processar_ciclo_trade",
+            )
+            return
 
         resposta_criacao_ordem = executar_entrada_escalonada(
             selection_id=selection_id,
-            valor_total=valor_total,
+            valor_total=valor_restante_para_executar,
             odds_tentativa=odds_tentativa,
             segundos_espera_por_tentativa=2,
             usar_market_no_final=False,
         )
 
+        valor_executado_nesta_rodada = float(
+            resposta_criacao_ordem.get("valor_executado_total") or 0.0
+        )
+
+        valor_executado_atualizado = round(
+            valor_ja_executado + valor_executado_nesta_rodada,
+            4,
+        )
+
+        valor_executado_por_mercado[market_id] = valor_executado_atualizado
+
+        valor_restante_total = round(
+            valor_total_alvo - valor_executado_atualizado,
+            4,
+        )
+
+        resposta_criacao_ordem["valor_total_alvo_mercado"] = valor_total_alvo
+        resposta_criacao_ordem["valor_ja_executado_antes"] = valor_ja_executado
+        resposta_criacao_ordem["valor_executado_nesta_rodada"] = (
+            valor_executado_nesta_rodada
+        )
+        resposta_criacao_ordem["valor_executado_acumulado_mercado"] = (
+            valor_executado_atualizado
+        )
+        resposta_criacao_ordem["valor_restante_total_mercado"] = valor_restante_total
+
         log_unico("ordem", json.dumps(resposta_criacao_ordem, sort_keys=True))
+
         log_service.registrar_ordem(
             OrdemLog(
                 data_hora=LogService.agora_str(),
@@ -1074,24 +1345,54 @@ def processar_ciclo_trade():
                 selection_id=str(selection_id),
                 tipo_ordem=str(resposta_criacao_ordem.get("tipo_execucao") or ""),
                 direcao_aposta="BUY",
-                stake=1.0,
+                stake=float(valor_executado_nesta_rodada),
                 odd_solicitada=float(odds_tentativa[0]),
                 ordem_enviada=True,
-                ordem_executada=bool(resposta_criacao_ordem.get("sucesso")),
+                ordem_executada=bool(valor_executado_nesta_rodada > 0),
                 status_ordem=str(resposta_criacao_ordem.get("status_final") or ""),
                 order_id=str(resposta_criacao_ordem.get("order_id") or ""),
             )
         )
 
-        if resposta_criacao_ordem["sucesso"]:
+        tipo_execucao = str(resposta_criacao_ordem.get("tipo_execucao") or "")
+        sucesso = bool(resposta_criacao_ordem.get("sucesso"))
+
+        deve_travar_mercado = False
+
+        if sucesso and valor_restante_total <= 1.00:
+            deve_travar_mercado = True
+
+        if tipo_execucao in [
+            "LIMIT_COMPLETO",
+            "LIMIT_PARTIAL_RESTANTE_MENOR_QUE_MINIMO",
+            "MARKET",
+        ]:
+            deve_travar_mercado = True
+
+        if deve_travar_mercado:
             market_id_em_andamento = market_id
-            order_id_em_andamento = resposta_criacao_ordem["order_id"]
+            order_id_em_andamento = resposta_criacao_ordem.get("order_id")
+            status_execucao = "SUCESSO"
+            mensagem_execucao = "Ciclo de trade finalizado ou restante menor que mínimo"
+        else:
+            market_id_em_andamento = None
+            order_id_em_andamento = None
+
+            if valor_executado_nesta_rodada > 0 and valor_restante_total > 1.00:
+                status_execucao = "PARCIAL_COM_RESTANTE"
+                mensagem_execucao = f"Execução parcial. Restante ainda disponível: {valor_restante_total}"
+            elif not sucesso:
+                status_execucao = "SEM_ENTRADA"
+                mensagem_execucao = "Nenhuma ordem executada nesse ciclo"
+            else:
+                status_execucao = "CONTINUAR_TENTANDO"
+                mensagem_execucao = f"Ordem processada, mas mercado não foi travado. Restante: {valor_restante_total}"
 
         registrar_execucao(
             rodovia=rodovia_mercado,
             etapa="ciclo_finalizado",
-            status="SUCESSO" if resposta_criacao_ordem["sucesso"] else "SEM_ENTRADA",
-            mensagem="Ciclo de trade processado",
+            status=status_execucao,
+            mensagem=mensagem_execucao,
             market_id=market_id,
             nome_metodo="processar_ciclo_trade",
         )
