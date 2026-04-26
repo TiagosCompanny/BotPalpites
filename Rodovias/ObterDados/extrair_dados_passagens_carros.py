@@ -18,8 +18,8 @@ ARQUIVO_PASSAGENS = DADOS_DIR / "passagens_carros_por_mercado.xlsx"
 ARQUIVO_ERROS = DADOS_DIR / "erros_atualizar_passagens_carros_por_mercado.xlsx"
 
 COLUNA_ID_MERCADO = "id"
-SALVAR_A_CADA = 25
-PAUSA_ENTRE_MERCADOS = 0.5
+SALVAR_A_CADA = 500
+PAUSA_ENTRE_MERCADOS = 0.3
 
 
 def criar_sessao():

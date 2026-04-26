@@ -343,7 +343,11 @@ def carregar_catalogo_modelos():
 
 
 def prever_aposta(
-    catalogo, rodovia_identificacao, meta_referencia, threshold_confianca
+    catalogo,
+    rodovia_identificacao,
+    meta_referencia,
+    threshold_confianca,
+    mercado_atual=None,
 ):
 
     if rodovia_identificacao not in catalogo:
@@ -464,6 +468,14 @@ def prever_aposta(
         entrada_dict["meta_num"] * entrada_dict["umidade_relativa"]
     )
 
+    features_passagens = obter_features_passagens_passadas_online(
+        rodovia_identificacao=rodovia_identificacao,
+        meta_referencia=meta_referencia,
+        mercado_atual=mercado_atual,
+    )
+
+    entrada_dict.update(features_passagens)
+
     colunas_faltantes = [col for col in features if col not in entrada_dict]
     if colunas_faltantes:
         raise ValueError(
@@ -528,6 +540,7 @@ def prever_aposta_por_mercado(catalogo, mercado, threshold_confianca):
         rodovia_identificacao=rodovia_identificacao,
         meta_referencia=meta_referencia,
         threshold_confianca=threshold_confianca,
+        mercado_atual=mercado,
     )
 
 
@@ -1078,6 +1091,334 @@ def calcular_valor_total_por_saldo(saldo):
     return valor
 
 
+def montar_url_mercado_live(market_id):
+    market_id = int(market_id)
+    return f"https://app.palpita.io/live/{market_id}-market/rodovia-5-minutos-qu-{market_id}"
+
+
+def obter_html_mercado_live(market_id):
+    url = montar_url_mercado_live(market_id)
+
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    response = session.get(url, headers=headers, timeout=60)
+    response.raise_for_status()
+
+    return response.text
+
+
+def normalizar_html_graph(html):
+    return (
+        html.replace('\\"', '"')
+        .replace("\\/", "/")
+        .replace("&quot;", '"')
+        .replace("\\u003c", "<")
+        .replace("\\u003e", ">")
+        .replace("\\u0026", "&")
+    )
+
+
+def extrair_array_json_balanceado(texto, nome_campo):
+    texto = normalizar_html_graph(texto)
+
+    pos = texto.find(f'"{nome_campo}"')
+
+    if pos == -1:
+        return None
+
+    inicio_array = texto.find("[", pos)
+
+    if inicio_array == -1:
+        return None
+
+    nivel = 0
+    dentro_string = False
+    escape = False
+
+    for i in range(inicio_array, len(texto)):
+        char = texto[i]
+
+        if escape:
+            escape = False
+            continue
+
+        if char == "\\":
+            escape = True
+            continue
+
+        if char == '"':
+            dentro_string = not dentro_string
+            continue
+
+        if dentro_string:
+            continue
+
+        if char == "[":
+            nivel += 1
+
+        elif char == "]":
+            nivel -= 1
+
+            if nivel == 0:
+                return texto[inicio_array : i + 1]
+
+    return None
+
+
+def obter_graph_data_mercado(market_id):
+    html = obter_html_mercado_live(market_id)
+
+    texto_array = extrair_array_json_balanceado(html, "graphData")
+
+    if not texto_array:
+        return []
+
+    try:
+        return json.loads(texto_array)
+    except Exception as e:
+        print(f"Erro ao converter graphData do mercado {market_id}: {e}")
+        return []
+
+
+def calcular_resumo_passagens_graph_data(graph_data):
+    if not graph_data:
+        return {
+            "pass_total_mercado": np.nan,
+            "pass_qtd_ultimos_2min": np.nan,
+            "pass_media_ultimos_2min": np.nan,
+            "pass_tendencia_5m": np.nan,
+        }
+
+    timestamps = []
+
+    for item in graph_data:
+        timestamp = item.get("timestamp")
+        if timestamp is None:
+            continue
+
+        try:
+            timestamps.append(int(timestamp))
+        except Exception:
+            continue
+
+    if not timestamps:
+        return {
+            "pass_total_mercado": np.nan,
+            "pass_qtd_ultimos_2min": np.nan,
+            "pass_media_ultimos_2min": np.nan,
+            "pass_tendencia_5m": np.nan,
+        }
+
+    timestamps = sorted(timestamps)
+    primeira_passagem = min(timestamps)
+
+    contagem_minutos = {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+    }
+
+    for timestamp in timestamps:
+        segundos_desde_inicio = timestamp - primeira_passagem
+        minuto_mercado = int(np.floor(segundos_desde_inicio / 60))
+        minuto_mercado = max(0, min(4, minuto_mercado)) + 1
+        contagem_minutos[minuto_mercado] += 1
+
+    pass_total_mercado = len(timestamps)
+    pass_qtd_primeiros_2min = contagem_minutos[1] + contagem_minutos[2]
+    pass_qtd_ultimos_2min = contagem_minutos[4] + contagem_minutos[5]
+    pass_media_ultimos_2min = pass_qtd_ultimos_2min / 2
+    pass_tendencia_5m = pass_qtd_ultimos_2min - pass_qtd_primeiros_2min
+
+    return {
+        "pass_total_mercado": float(pass_total_mercado),
+        "pass_qtd_ultimos_2min": float(pass_qtd_ultimos_2min),
+        "pass_media_ultimos_2min": float(pass_media_ultimos_2min),
+        "pass_tendencia_5m": float(pass_tendencia_5m),
+    }
+
+
+def buscar_mercado_por_id(market_id):
+    url = f"https://app.palpita.io/api/v1/markets/{int(market_id)}"
+
+    response = session.get(url, timeout=20)
+
+    if response.status_code == 404:
+        return None
+
+    response.raise_for_status()
+
+    dados = response.json()
+
+    if not dados.get("success"):
+        return None
+
+    return dados.get("data")
+
+
+def buscar_ultimos_mercados_resolvidos_rodovia(
+    rodovia_identificacao,
+    mercado_atual=None,
+    quantidade=10,
+    max_tentativas=300,
+):
+    if not mercado_atual:
+        return []
+
+    mercado_atual_id = mercado_atual.get("id")
+
+    if mercado_atual_id is None:
+        return []
+
+    mercado_atual_id = int(mercado_atual_id)
+
+    opens_at = mercado_atual.get("opensAt")
+    abertura_atual = pd.to_datetime(opens_at, errors="coerce") if opens_at else None
+
+    if (
+        abertura_atual is not None
+        and not pd.isna(abertura_atual)
+        and abertura_atual.tzinfo
+    ):
+        abertura_atual = abertura_atual.tz_localize(None)
+
+    mercados_filtrados = []
+
+    id_tentativa = mercado_atual_id - 1
+    tentativas = 0
+
+    while id_tentativa > 0 and tentativas < max_tentativas:
+        tentativas += 1
+
+        mercado = buscar_mercado_por_id(id_tentativa)
+
+        if mercado is None:
+            id_tentativa -= 1
+            continue
+
+        if mercado.get("status") != "RESOLVED":
+            id_tentativa -= 1
+            continue
+
+        if mercado.get("title") != "Rodovia (5 minutos): quantos carros?":
+            id_tentativa -= 1
+            continue
+
+        rodovia_item = extrair_rodovia_do_mercado(mercado)
+
+        if rodovia_item != rodovia_identificacao:
+            id_tentativa -= 1
+            continue
+
+        closes_at = mercado.get("closesAt")
+
+        if abertura_atual is not None and not pd.isna(abertura_atual) and closes_at:
+            fechamento_item = pd.to_datetime(closes_at, errors="coerce")
+
+            if pd.isna(fechamento_item):
+                id_tentativa -= 1
+                continue
+
+            if fechamento_item.tzinfo:
+                fechamento_item = fechamento_item.tz_localize(None)
+
+            if fechamento_item >= abertura_atual:
+                id_tentativa -= 1
+                continue
+
+        mercados_filtrados.append(mercado)
+
+        if len(mercados_filtrados) >= quantidade:
+            break
+
+        id_tentativa -= 1
+        time.sleep(0.05)
+
+    print("===== MERCADOS ANTERIORES USADOS POR ID =====")
+    for m in mercados_filtrados:
+        print(
+            "id:",
+            m.get("id"),
+            "| opensAt:",
+            m.get("opensAt"),
+            "| closesAt:",
+            m.get("closesAt"),
+            "| rodovia:",
+            extrair_rodovia_do_mercado(m),
+        )
+
+    return mercados_filtrados
+
+
+def obter_features_passagens_passadas_online(
+    rodovia_identificacao,
+    meta_referencia,
+    mercado_atual=None,
+):
+    mercados = buscar_ultimos_mercados_resolvidos_rodovia(
+        rodovia_identificacao=rodovia_identificacao,
+        mercado_atual=mercado_atual,
+        quantidade=10,
+    )
+
+    resumos = []
+
+    for mercado in mercados:
+        market_id = mercado.get("id")
+
+        try:
+            graph_data = obter_graph_data_mercado(market_id)
+            resumo = calcular_resumo_passagens_graph_data(graph_data)
+            resumo["market_id"] = str(market_id)
+            resumos.append(resumo)
+        except Exception as e:
+            print(f"Erro ao obter passagens do mercado anterior {market_id}: {e}")
+
+        time.sleep(0.2)
+
+    if not resumos:
+        return {
+            "lag1_pass_total_mercado": np.nan,
+            "lag1_pass_qtd_ultimos_2min": np.nan,
+            "lag1_pass_media_ultimos_2min": np.nan,
+            "lag1_pass_tendencia_5m": np.nan,
+            "roll3_mean_pass_total_mercado": np.nan,
+            "roll5_mean_pass_total_mercado": np.nan,
+            "roll10_mean_pass_total_mercado": np.nan,
+            "lag1_ratio_pass_total_meta": np.nan,
+            "roll3_ratio_pass_total_meta": np.nan,
+            "roll5_ratio_pass_total_meta": np.nan,
+        }
+
+    df = pd.DataFrame(resumos)
+
+    lag1 = df.iloc[0]
+
+    roll3 = df["pass_total_mercado"].head(3).mean()
+    roll5 = df["pass_total_mercado"].head(5).mean()
+    roll10 = df["pass_total_mercado"].head(10).mean()
+
+    meta = float(meta_referencia)
+
+    if meta == 0:
+        meta = np.nan
+
+    return {
+        "lag1_pass_total_mercado": float(lag1["pass_total_mercado"]),
+        "lag1_pass_qtd_ultimos_2min": float(lag1["pass_qtd_ultimos_2min"]),
+        "lag1_pass_media_ultimos_2min": float(lag1["pass_media_ultimos_2min"]),
+        "lag1_pass_tendencia_5m": float(lag1["pass_tendencia_5m"]),
+        "roll3_mean_pass_total_mercado": float(roll3),
+        "roll5_mean_pass_total_mercado": float(roll5),
+        "roll10_mean_pass_total_mercado": float(roll10),
+        "lag1_ratio_pass_total_meta": float(lag1["pass_total_mercado"] / meta),
+        "roll3_ratio_pass_total_meta": float(roll3 / meta),
+        "roll5_ratio_pass_total_meta": float(roll5 / meta),
+    }
+
+
 def processar_ciclo_trade():
     global market_id_em_andamento
     global order_id_em_andamento
@@ -1409,16 +1750,119 @@ def processar_ciclo_trade():
         )
 
 
+def testar_features_passagens_com_caso_aleatorio():
+    caminho_base = (
+        Path(__file__).resolve().parents[1]
+        / "DadosRodovias"
+        / "dados_todas_rodovias.xlsx"
+    )
+
+    if not caminho_base.exists():
+        print(f"Base não encontrada: {caminho_base}")
+        return
+
+    df = pd.read_excel(caminho_base)
+
+    colunas_obrigatorias = [
+        "id",
+        "rodovia_identificacao",
+        "meta_referencia",
+        "abertura",
+    ]
+
+    for coluna in colunas_obrigatorias:
+        if coluna not in df.columns:
+            print(f"Coluna obrigatória não encontrada: {coluna}")
+            return
+
+    df = df.dropna(subset=colunas_obrigatorias).copy()
+
+    if df.empty:
+        print("Nenhum registro válido encontrado na base.")
+        return
+
+    df["abertura"] = pd.to_datetime(df["abertura"], errors="coerce")
+    df["fechamento"] = pd.to_datetime(df["fechamento"], errors="coerce")
+
+    df = df.sort_values(
+        by=["fechamento", "abertura"], ascending=[False, False]
+    ).reset_index(drop=True)
+
+    caso = df.iloc[0]
+
+    market_id = str(caso["id"])
+    rodovia_identificacao = str(caso["rodovia_identificacao"])
+    meta_referencia = float(caso["meta_referencia"])
+    abertura = caso["abertura"]
+
+    mercado_atual_simulado = {
+        "id": market_id,
+        "opensAt": pd.to_datetime(abertura).isoformat(),
+    }
+
+    print("")
+    print("===== TESTE FEATURES PASSAGENS =====")
+    print(f"Arquivo base: {caminho_base}")
+    print(f"MarketId sorteado: {market_id}")
+    print(f"Rodovia: {rodovia_identificacao}")
+    print(f"Meta referência: {meta_referencia}")
+    print(f"Abertura: {abertura}")
+    print("")
+
+    features_calculadas = obter_features_passagens_passadas_online(
+        rodovia_identificacao=rodovia_identificacao,
+        meta_referencia=meta_referencia,
+        mercado_atual=mercado_atual_simulado,
+    )
+
+    print("===== FEATURES CALCULADAS ONLINE =====")
+
+    for chave, valor in features_calculadas.items():
+        print(f"{chave}: {valor}")
+
+    print("")
+    print("===== VALORES EXISTENTES NA PLANILHA PARA ESSE CASO =====")
+
+    for chave in features_calculadas.keys():
+        if chave in df.columns:
+            print(f"{chave}: {caso.get(chave)}")
+        else:
+            print(f"{chave}: coluna não existe na planilha")
+
+    print("")
+    print("===== COMPARAÇÃO =====")
+
+    for chave, valor_calculado in features_calculadas.items():
+        if chave not in df.columns:
+            continue
+
+        valor_planilha = caso.get(chave)
+
+        try:
+            valor_planilha_float = float(valor_planilha)
+            diferenca = valor_calculado - valor_planilha_float
+
+            print(
+                f"{chave} | online={valor_calculado} | "
+                f"planilha={valor_planilha_float} | diff={diferenca}"
+            )
+        except Exception:
+            print(f"{chave} | online={valor_calculado} | " f"planilha={valor_planilha}")
+
+    print("===== FIM DO TESTE =====")
+
+
 if __name__ == "__main__":
+    testar_features_passagens_com_caso_aleatorio()
 
-    schedule.every(0.5).seconds.do(processar_ciclo_trade)
+    # schedule.every(0.5).seconds.do(processar_ciclo_trade)
 
-    while True:
-        schedule.run_pending()
+    # while True:
+    # schedule.run_pending()
 
-        if schedule.idle_seconds() is None:
-            break
+    # if schedule.idle_seconds() is None:
+    # break
 
-        time.sleep(1)
+    # time.sleep(1)
 
-    print("Scheduler encerrado.")
+    # print("Scheduler encerrado.")

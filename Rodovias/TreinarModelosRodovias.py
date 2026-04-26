@@ -89,6 +89,16 @@ FEATURES_PRODUCAO = [
     "interacao_meta_hora_cos",
     "interacao_meta_temperatura",
     "interacao_meta_umidade",
+    "lag1_pass_total_mercado",
+    "lag1_pass_qtd_ultimos_2min",
+    "lag1_pass_media_ultimos_2min",
+    "lag1_pass_tendencia_5m",
+    "roll3_mean_pass_total_mercado",
+    "roll5_mean_pass_total_mercado",
+    "roll10_mean_pass_total_mercado",
+    "lag1_ratio_pass_total_meta",
+    "roll3_ratio_pass_total_meta",
+    "roll5_ratio_pass_total_meta",
 ]
 
 log_service = LogService()
@@ -158,6 +168,17 @@ def preparar_base(df, config):
         "chuva_mm",
         "cobertura_nuvens",
         "estava_chovendo",
+
+        "lag1_pass_total_mercado",
+        "lag1_pass_qtd_ultimos_2min",
+        "lag1_pass_media_ultimos_2min",
+        "lag1_pass_tendencia_5m",
+        "roll3_mean_pass_total_mercado",
+        "roll5_mean_pass_total_mercado",
+        "roll10_mean_pass_total_mercado",
+        "lag1_ratio_pass_total_meta",
+        "roll3_ratio_pass_total_meta",
+        "roll5_ratio_pass_total_meta",
     ]:
         if col in df.columns:
             df[col] = df[col].apply(parse_float)
@@ -293,7 +314,7 @@ def treinar_modelo_rodovia(rodovia_chave, caminho_excel=ARQUIVO_BASE):
 
     features = [c for c in FEATURES_PRODUCAO if c in df.columns]
 
-    df_model = df.dropna(subset=["alvo_mais", "meta_num"]).copy()
+    df_model = df.dropna(subset=["alvo_mais", "meta_num"] + features).copy()
 
     n = len(df_model)
     if n < 60:

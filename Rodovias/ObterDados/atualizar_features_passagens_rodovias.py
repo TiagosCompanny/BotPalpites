@@ -3,16 +3,11 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
-
-BASE_DIR = Path(__file__).resolve().parent
-
-
 BASE_DIR = Path(__file__).resolve().parent
 DADOS_DIR = BASE_DIR.parent / "DadosRodovias"
 
 ARQUIVO_BASE = DADOS_DIR / "dados_todas_rodovias.xlsx"
 ARQUIVO_PASSAGENS = DADOS_DIR / "passagens_carros_por_mercado.xlsx"
-
 
 COLUNAS_FEATURES_PASSAGENS = [
     "lag1_pass_total_mercado",
@@ -28,6 +23,25 @@ COLUNAS_FEATURES_PASSAGENS = [
 ]
 
 
+def normalizar_id(valor):
+    if pd.isna(valor):
+        return None
+
+    texto = str(valor).strip()
+
+    if texto == "":
+        return None
+
+    try:
+        numero = float(texto)
+        if numero.is_integer():
+            return str(int(numero))
+    except Exception:
+        pass
+
+    return texto
+
+
 def carregar_planilhas():
     if not os.path.exists(ARQUIVO_BASE):
         raise FileNotFoundError(f"Base principal não encontrada: {ARQUIVO_BASE}")
@@ -41,48 +55,58 @@ def carregar_planilhas():
     return df_base, df_passagens
 
 
-def preparar_base_principal(df_base):
-    df_base = df_base.copy()
+def preparar_base_principal_para_calculo(df_base):
+    df = df_base.copy()
 
-    if "id" not in df_base.columns:
+    if "id" not in df.columns:
         raise ValueError("Coluna 'id' não encontrada na base principal.")
 
-    if "rodovia_identificacao" not in df_base.columns:
+    if "rodovia_identificacao" not in df.columns:
         raise ValueError("Coluna 'rodovia_identificacao' não encontrada na base principal.")
 
-    if "abertura" not in df_base.columns:
+    if "abertura" not in df.columns:
         raise ValueError("Coluna 'abertura' não encontrada na base principal.")
 
-    if "meta_referencia" not in df_base.columns:
+    if "meta_referencia" not in df.columns:
         raise ValueError("Coluna 'meta_referencia' não encontrada na base principal.")
 
-    df_base["id"] = df_base["id"].astype(str)
-    df_base["abertura"] = pd.to_datetime(df_base["abertura"], errors="coerce")
-    df_base["fechamento"] = pd.to_datetime(df_base["fechamento"], errors="coerce")
-    df_base["meta_referencia"] = pd.to_numeric(df_base["meta_referencia"], errors="coerce")
+    df["__linha_original"] = df.index
+    df["id"] = df["id"].apply(normalizar_id)
+    df["abertura"] = pd.to_datetime(df["abertura"], errors="coerce")
 
-    for coluna in COLUNAS_FEATURES_PASSAGENS:
-        if coluna in df_base.columns:
-            df_base = df_base.drop(columns=[coluna])
+    if "fechamento" in df.columns:
+        df["fechamento"] = pd.to_datetime(df["fechamento"], errors="coerce")
 
-    return df_base
+    df["meta_referencia"] = pd.to_numeric(df["meta_referencia"], errors="coerce")
+
+    return df
 
 
 def preparar_base_passagens(df_passagens):
-    df_passagens = df_passagens.copy()
+    df = df_passagens.copy()
 
-    if "MercadoId" not in df_passagens.columns:
+    if "MercadoId" not in df.columns:
         raise ValueError("Coluna 'MercadoId' não encontrada na base de passagens.")
 
-    if "DataHora" not in df_passagens.columns:
+    if "DataHora" not in df.columns:
         raise ValueError("Coluna 'DataHora' não encontrada na base de passagens.")
 
-    df_passagens["MercadoId"] = df_passagens["MercadoId"].astype(str)
-    df_passagens["DataHora"] = pd.to_datetime(df_passagens["DataHora"], errors="coerce")
+    df["MercadoId"] = df["MercadoId"].apply(normalizar_id)
+    df["DataHora"] = pd.to_datetime(df["DataHora"], errors="coerce")
 
-    df_passagens = df_passagens.dropna(subset=["MercadoId", "DataHora"]).copy()
+    df = df.dropna(subset=["MercadoId", "DataHora"]).copy()
 
-    return df_passagens
+    return df
+
+
+def garantir_colunas_features(df_base_original):
+    df = df_base_original.copy()
+
+    for coluna in COLUNAS_FEATURES_PASSAGENS:
+        if coluna not in df.columns:
+            df[coluna] = np.nan
+
+    return df
 
 
 def calcular_resumo_passagens_por_mercado(df_passagens):
@@ -168,8 +192,8 @@ def calcular_resumo_passagens_por_mercado(df_passagens):
     ]
 
 
-def aplicar_features_passagens(df_base, resumo_passagens):
-    df = df_base.copy()
+def calcular_features_passagens(df_base_calculo, resumo_passagens):
+    df = df_base_calculo.copy()
 
     df = df.merge(
         resumo_passagens,
@@ -219,30 +243,64 @@ def aplicar_features_passagens(df_base, resumo_passagens):
         df["roll5_mean_pass_total_mercado"] / meta
     )
 
-    colunas_auxiliares = [
-        "pass_total_mercado",
-        "pass_qtd_ultimos_2min",
-        "pass_media_ultimos_2min",
-        "pass_tendencia_5m",
-    ]
-
-    df = df.drop(columns=[c for c in colunas_auxiliares if c in df.columns])
-
-    if "fechamento" in df.columns:
-        df = df.sort_values(by="fechamento", ascending=False).reset_index(drop=True)
-
-    return df
+    return df[["__linha_original"] + COLUNAS_FEATURES_PASSAGENS]
 
 
-def atualizar_features_passagens():
+def celula_pendente(serie):
+    return serie.isna() | (serie.astype(str).str.strip() == "")
+
+
+def atualizar_somente_campos_pendentes(df_base_original, df_features_calculadas):
+    df_final = garantir_colunas_features(df_base_original)
+
+    df_features = df_features_calculadas.set_index("__linha_original")
+
+    total_atualizados = {}
+
+    for coluna in COLUNAS_FEATURES_PASSAGENS:
+        pendentes = celula_pendente(df_final[coluna])
+
+        valores_calculados = df_features[coluna].reindex(df_final.index)
+
+        pode_atualizar = pendentes & valores_calculados.notna()
+
+        qtd = int(pode_atualizar.sum())
+
+        if qtd > 0:
+            df_final.loc[pode_atualizar, coluna] = valores_calculados.loc[pode_atualizar]
+
+        total_atualizados[coluna] = qtd
+
+    return df_final, total_atualizados
+
+
+def atualizar_features_passagens_somente_pendentes():
     print("Carregando planilhas...")
 
-    df_base, df_passagens = carregar_planilhas()
+    df_base_original, df_passagens = carregar_planilhas()
 
-    print(f"Registros na base principal: {len(df_base)}")
+    print(f"Registros na base principal: {len(df_base_original)}")
     print(f"Registros na base de passagens: {len(df_passagens)}")
 
-    df_base = preparar_base_principal(df_base)
+    df_base_original = garantir_colunas_features(df_base_original)
+
+    qtd_pendentes_antes = {
+        coluna: int(celula_pendente(df_base_original[coluna]).sum())
+        for coluna in COLUNAS_FEATURES_PASSAGENS
+    }
+
+    total_pendentes = sum(qtd_pendentes_antes.values())
+
+    print("Pendências antes da atualização:")
+
+    for coluna, qtd in qtd_pendentes_antes.items():
+        print(f"{coluna}: {qtd}")
+
+    if total_pendentes == 0:
+        print("Nenhum campo pendente encontrado. Nada para atualizar.")
+        return
+
+    df_base_calculo = preparar_base_principal_para_calculo(df_base_original)
     df_passagens = preparar_base_passagens(df_passagens)
 
     print("Calculando resumo de passagens por mercado...")
@@ -251,21 +309,33 @@ def atualizar_features_passagens():
 
     print(f"Mercados com passagens encontradas: {len(resumo_passagens)}")
 
-    print("Aplicando features de passagens passadas...")
+    print("Calculando features em memória...")
 
-    df_atualizado = aplicar_features_passagens(df_base, resumo_passagens)
+    df_features_calculadas = calcular_features_passagens(df_base_calculo, resumo_passagens)
 
-    df_atualizado.to_excel(ARQUIVO_BASE, index=False)
+    print("Atualizando somente células pendentes...")
+
+    df_final, total_atualizados = atualizar_somente_campos_pendentes(
+        df_base_original,
+        df_features_calculadas
+    )
+
+    df_final.to_excel(ARQUIVO_BASE, index=False)
 
     print("Base atualizada com sucesso.")
     print(f"Arquivo salvo em: {ARQUIVO_BASE}")
 
-    print("Colunas atualizadas:")
+    print("Campos preenchidos nesta execução:")
 
     for coluna in COLUNAS_FEATURES_PASSAGENS:
-        preenchidos = df_atualizado[coluna].notna().sum()
-        print(f"{coluna}: {preenchidos} registros preenchidos")
+        print(f"{coluna}: {total_atualizados[coluna]}")
+
+    print("Pendências depois da atualização:")
+
+    for coluna in COLUNAS_FEATURES_PASSAGENS:
+        qtd = int(celula_pendente(df_final[coluna]).sum())
+        print(f"{coluna}: {qtd}")
 
 
 if __name__ == "__main__":
-    atualizar_features_passagens()
+    atualizar_features_passagens_somente_pendentes()

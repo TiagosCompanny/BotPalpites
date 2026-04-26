@@ -38,7 +38,17 @@
         "interacao_meta_hora_sin",
         "interacao_meta_hora_cos",
         "interacao_meta_temperatura",
-        "interacao_meta_umidade"
+        "interacao_meta_umidade",
+        "lag1_pass_total_mercado",
+        "lag1_pass_qtd_ultimos_2min",
+        "lag1_pass_media_ultimos_2min",
+        "lag1_pass_tendencia_5m",
+        "roll3_mean_pass_total_mercado",
+        "roll5_mean_pass_total_mercado",
+        "roll10_mean_pass_total_mercado",
+        "lag1_ratio_pass_total_meta",
+        "roll3_ratio_pass_total_meta",
+        "roll5_ratio_pass_total_meta"
     ],
     "target": "alvo_mais",
     "classe_1": "Mais de X",
@@ -46,20 +56,20 @@
     "modelo_escolhido": "rf_producao_friendly_sem_lags",
     "split": "temporal_80_20",
     "metricas_teste": {
-        "accuracy": 0.601885,
-        "auc": 0.677415,
-        "precision_mais": 0.56338,
-        "recall_mais": 0.780488,
-        "f1_mais": 0.654397,
-        "f1_ate": 0.530556,
-        "macro_f1": 0.592476,
-        "baseline_majoritaria": 0.517079,
-        "ganho_vs_baseline": 0.084806,
-        "taxa_mais_teste": 0.482921
+        "accuracy": 0.64486,
+        "auc": 0.69316,
+        "precision_mais": 0.632319,
+        "recall_mais": 0.647482,
+        "f1_mais": 0.63981,
+        "f1_ate": 0.64977,
+        "macro_f1": 0.64479,
+        "baseline_majoritaria": 0.51285,
+        "ganho_vs_baseline": 0.132009,
+        "taxa_mais_teste": 0.48715
     },
     "quantidades": {
-        "total_modelagem": 4243,
-        "treino": 3394,
-        "teste": 849
+        "total_modelagem": 4280,
+        "treino": 3424,
+        "teste": 856
     }
 }
