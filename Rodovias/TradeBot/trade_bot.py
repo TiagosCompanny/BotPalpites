@@ -1853,16 +1853,15 @@ def testar_features_passagens_com_caso_aleatorio():
 
 
 if __name__ == "__main__":
-    testar_features_passagens_com_caso_aleatorio()
 
-    # schedule.every(0.5).seconds.do(processar_ciclo_trade)
+    schedule.every(0.5).seconds.do(processar_ciclo_trade)
 
-    # while True:
-    # schedule.run_pending()
+    while True:
+        schedule.run_pending()
 
-    # if schedule.idle_seconds() is None:
-    # break
+        if schedule.idle_seconds() is None:
+            break
 
-    # time.sleep(1)
+        time.sleep(1)
 
-    # print("Scheduler encerrado.")
+    print("Scheduler encerrado.")
