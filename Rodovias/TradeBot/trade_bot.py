@@ -12,6 +12,7 @@ import pandas as pd
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from collections import OrderedDict
 import sys
 import warnings
 
@@ -136,6 +137,9 @@ market_id_em_andamento = None
 order_id_em_andamento = None
 valor_executado_por_mercado = {}
 valor_total_alvo_por_mercado = {}
+cache_previsao_por_mercado = {}
+cache_resumo_passagens_por_market_id = OrderedDict()
+MAX_CACHE_RESUMOS_PASSAGENS = 20
 
 coordenadas_rodovias = {
     ("Rodovia Arão Sahm", 95): {"latitude": -22.9256, "longitude": -46.5529},
@@ -1351,6 +1355,14 @@ def buscar_ultimos_mercados_resolvidos_rodovia(
 
     return mercados_filtrados
 
+def salvar_resumo_passagens_cache(market_id, resumo):
+    market_id = str(market_id)
+
+    cache_resumo_passagens_por_market_id[market_id] = resumo
+    cache_resumo_passagens_por_market_id.move_to_end(market_id)
+
+    while len(cache_resumo_passagens_por_market_id) > MAX_CACHE_RESUMOS_PASSAGENS:
+        cache_resumo_passagens_por_market_id.popitem(last=False)
 
 def obter_features_passagens_passadas_online(
     rodovia_identificacao,
@@ -1366,17 +1378,25 @@ def obter_features_passagens_passadas_online(
     resumos = []
 
     for mercado in mercados:
-        market_id = mercado.get("id")
+        market_id = str(mercado.get("id"))
 
         try:
-            graph_data = obter_graph_data_mercado(market_id)
-            resumo = calcular_resumo_passagens_graph_data(graph_data)
-            resumo["market_id"] = str(market_id)
+            
+            if market_id in cache_resumo_passagens_por_market_id:
+                print(f"Usando resumo de passagens em cache para mercado anterior {market_id}")
+                resumo = cache_resumo_passagens_por_market_id[market_id]
+                cache_resumo_passagens_por_market_id.move_to_end(market_id)
+            else:
+                graph_data = obter_graph_data_mercado(market_id)
+                resumo = calcular_resumo_passagens_graph_data(graph_data)
+                resumo["market_id"] = str(market_id)
+                salvar_resumo_passagens_cache(market_id, resumo)
+                print(f"Resumo de passagens calculado e salvo em cache para mercado anterior {market_id}")
+                
             resumos.append(resumo)
+
         except Exception as e:
             print(f"Erro ao obter passagens do mercado anterior {market_id}: {e}")
-
-        time.sleep(0.2)
 
     if not resumos:
         return {
@@ -1419,11 +1439,31 @@ def obter_features_passagens_passadas_online(
     }
 
 
+def obter_previsao_com_cache(catalogo, mercado, threshold_confianca):
+    market_id = str(mercado.get("id"))
+
+    if market_id in cache_previsao_por_mercado:
+        print(f"Usando previsão em cache para mercado {market_id}")
+        return cache_previsao_por_mercado[market_id]
+
+    resultado = prever_aposta_por_mercado(
+        catalogo=catalogo,
+        mercado=mercado,
+        threshold_confianca=threshold_confianca,
+    )
+
+    cache_previsao_por_mercado[market_id] = resultado
+
+    print(f"Previsão calculada e salva em cache para mercado {market_id}")
+
+    return resultado
+
 def processar_ciclo_trade():
     global market_id_em_andamento
     global order_id_em_andamento
     global valor_executado_por_mercado
     global valor_total_alvo_por_mercado
+    global cache_previsao_por_mercado
 
     saldo_antes = obter_saldo()
 
@@ -1453,6 +1493,7 @@ def processar_ciclo_trade():
             )
             market_id_em_andamento = None
             order_id_em_andamento = None
+            cache_previsao_por_mercado.clear()
 
         if market_id_em_andamento == market_id:
             print(
@@ -1540,7 +1581,11 @@ def processar_ciclo_trade():
 
         threshold_confianca = config_rodovia["threshold_confianca"]
 
-        resultado = prever_aposta_por_mercado(catalogo, mercado, threshold_confianca)
+        resultado = obter_previsao_com_cache(
+            catalogo=catalogo,
+            mercado=mercado,
+            threshold_confianca=threshold_confianca,
+        )
 
         log_service.registrar_previsao(
             PrevisaoLog(
@@ -1750,106 +1795,6 @@ def processar_ciclo_trade():
         )
 
 
-def testar_features_passagens_com_caso_aleatorio():
-    caminho_base = (
-        Path(__file__).resolve().parents[1]
-        / "DadosRodovias"
-        / "dados_todas_rodovias.xlsx"
-    )
-
-    if not caminho_base.exists():
-        print(f"Base não encontrada: {caminho_base}")
-        return
-
-    df = pd.read_excel(caminho_base)
-
-    colunas_obrigatorias = [
-        "id",
-        "rodovia_identificacao",
-        "meta_referencia",
-        "abertura",
-    ]
-
-    for coluna in colunas_obrigatorias:
-        if coluna not in df.columns:
-            print(f"Coluna obrigatória não encontrada: {coluna}")
-            return
-
-    df = df.dropna(subset=colunas_obrigatorias).copy()
-
-    if df.empty:
-        print("Nenhum registro válido encontrado na base.")
-        return
-
-    df["abertura"] = pd.to_datetime(df["abertura"], errors="coerce")
-    df["fechamento"] = pd.to_datetime(df["fechamento"], errors="coerce")
-
-    df = df.sort_values(
-        by=["fechamento", "abertura"], ascending=[False, False]
-    ).reset_index(drop=True)
-
-    caso = df.iloc[0]
-
-    market_id = str(caso["id"])
-    rodovia_identificacao = str(caso["rodovia_identificacao"])
-    meta_referencia = float(caso["meta_referencia"])
-    abertura = caso["abertura"]
-
-    mercado_atual_simulado = {
-        "id": market_id,
-        "opensAt": pd.to_datetime(abertura).isoformat(),
-    }
-
-    print("")
-    print("===== TESTE FEATURES PASSAGENS =====")
-    print(f"Arquivo base: {caminho_base}")
-    print(f"MarketId sorteado: {market_id}")
-    print(f"Rodovia: {rodovia_identificacao}")
-    print(f"Meta referência: {meta_referencia}")
-    print(f"Abertura: {abertura}")
-    print("")
-
-    features_calculadas = obter_features_passagens_passadas_online(
-        rodovia_identificacao=rodovia_identificacao,
-        meta_referencia=meta_referencia,
-        mercado_atual=mercado_atual_simulado,
-    )
-
-    print("===== FEATURES CALCULADAS ONLINE =====")
-
-    for chave, valor in features_calculadas.items():
-        print(f"{chave}: {valor}")
-
-    print("")
-    print("===== VALORES EXISTENTES NA PLANILHA PARA ESSE CASO =====")
-
-    for chave in features_calculadas.keys():
-        if chave in df.columns:
-            print(f"{chave}: {caso.get(chave)}")
-        else:
-            print(f"{chave}: coluna não existe na planilha")
-
-    print("")
-    print("===== COMPARAÇÃO =====")
-
-    for chave, valor_calculado in features_calculadas.items():
-        if chave not in df.columns:
-            continue
-
-        valor_planilha = caso.get(chave)
-
-        try:
-            valor_planilha_float = float(valor_planilha)
-            diferenca = valor_calculado - valor_planilha_float
-
-            print(
-                f"{chave} | online={valor_calculado} | "
-                f"planilha={valor_planilha_float} | diff={diferenca}"
-            )
-        except Exception:
-            print(f"{chave} | online={valor_calculado} | " f"planilha={valor_planilha}")
-
-    print("===== FIM DO TESTE =====")
 
 
 if __name__ == "__main__":
