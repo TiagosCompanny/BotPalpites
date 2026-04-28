@@ -84,17 +84,17 @@ CATALOGO_RODOVIAS = {
 
 CONFIG_ENTRADA_RODOVIA = {
     "Rodovia Arão Sahm, KM 95 — Bragança Paulista (SP).": {
-        "threshold_confianca": 0.60,
-        "odd_minima_base": 2.30,
-        "degrau_odds": [0.25, 0.10, 0.00, -0.10],
-    },
-    "Doutor Manoel Hyppolito Rego, KM 83 — Caraguatatuba (SP).": {
         "threshold_confianca": 0.62,
         "odd_minima_base": 2.30,
         "degrau_odds": [0.25, 0.10, 0.00, -0.10],
     },
+    "Doutor Manoel Hyppolito Rego, KM 83 — Caraguatatuba (SP).": {
+        "threshold_confianca": 0.63,
+        "odd_minima_base": 2.30,
+        "degrau_odds": [0.25, 0.10, 0.00, -0.10],
+    },
     "Floriano Rodrigues Pinheiro, KM 26 — Pindamonhangaba (SP).": {
-        "threshold_confianca": 0.60,
+        "threshold_confianca": 0.63,
         "odd_minima_base": 2.30,
         "degrau_odds": [0.25, 0.10, 0.00, -0.10],
     },
@@ -1467,6 +1467,21 @@ def processar_ciclo_trade():
 
     saldo_antes = obter_saldo()
 
+    #Stoploss teste
+    """
+     if saldo_antes is not None and float(saldo_antes) < 10:
+        log_unico("saldo", f"SALDO MENOR QUE 10: {saldo_antes}. Encerrando programa.")
+        registrar_execucao(
+            rodovia="",
+            etapa="validar_saldo",
+            status="SALDO_BAIXO",
+            mensagem=f"Saldo menor que 10. Saldo atual: {saldo_antes}",
+            nome_metodo="processar_ciclo_trade",
+        )
+        raise SystemExit
+    """
+
+
     try:
         catalogo = carregar_catalogo_modelos()
 
@@ -1691,7 +1706,7 @@ def processar_ciclo_trade():
             selection_id=selection_id,
             valor_total=valor_restante_para_executar,
             odds_tentativa=odds_tentativa,
-            segundos_espera_por_tentativa=2,
+            segundos_espera_por_tentativa=1.5, #diminuido de 2 para 1.5
             usar_market_no_final=False,
         )
 

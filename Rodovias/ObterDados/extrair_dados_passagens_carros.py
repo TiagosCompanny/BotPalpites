@@ -7,7 +7,8 @@ from datetime import datetime
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from pathlib import Path
-
+from zoneinfo import ZoneInfo
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -18,9 +19,9 @@ ARQUIVO_PASSAGENS = DADOS_DIR / "passagens_carros_por_mercado.xlsx"
 ARQUIVO_ERROS = DADOS_DIR / "erros_atualizar_passagens_carros_por_mercado.xlsx"
 
 COLUNA_ID_MERCADO = "id"
-SALVAR_A_CADA = 500
+SALVAR_A_CADA = 5000
 PAUSA_ENTRE_MERCADOS = 0.3
-
+MAX_THREADS = 10
 
 def criar_sessao():
     session = requests.Session()
@@ -31,7 +32,7 @@ def criar_sessao():
         read=5,
         backoff_factor=2,
         status_forcelist=[429, 500, 502, 503, 504],
-        allowed_methods=["GET"]
+        allowed_methods=["GET"],
     )
 
     adapter = HTTPAdapter(max_retries=retry)
@@ -41,7 +42,6 @@ def criar_sessao():
     return session
 
 
-session = criar_sessao()
 
 
 def montar_url_mercado(market_id):
@@ -49,12 +49,10 @@ def montar_url_mercado(market_id):
     return f"https://app.palpita.io/live/{market_id}-market/rodovia-5-minutos-qu-{market_id}"
 
 
-def obter_html_mercado(market_id):
+def obter_html_mercado(market_id, session):
     url = montar_url_mercado(market_id)
 
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
+    headers = {"User-Agent": "Mozilla/5.0"}
 
     response = session.get(url, headers=headers, timeout=60)
     response.raise_for_status()
@@ -64,8 +62,7 @@ def obter_html_mercado(market_id):
 
 def normalizar_html(html):
     return (
-        html
-        .replace('\\"', '"')
+        html.replace('\\"', '"')
         .replace("\\/", "/")
         .replace("&quot;", '"')
         .replace("\\u003c", "<")
@@ -116,18 +113,15 @@ def extrair_array_json_balanceado(texto, nome_campo):
             nivel -= 1
 
             if nivel == 0:
-                return texto[inicio_array:i + 1]
+                return texto[inicio_array : i + 1]
 
     return None
 
 
-def obter_graph_data_mercado(market_id):
-    html = obter_html_mercado(market_id)
+def obter_graph_data_mercado(market_id, session):
+    html = obter_html_mercado(market_id, session)
 
-    texto_array = extrair_array_json_balanceado(
-        html,
-        "graphData"
-    )
+    texto_array = extrair_array_json_balanceado(html, "graphData")
 
     if not texto_array:
         return []
@@ -144,7 +138,16 @@ def converter_timestamp_para_data_hora(timestamp):
         return None
 
     try:
-        return datetime.fromtimestamp(int(timestamp)).strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = int(timestamp)
+
+        if timestamp > 10_000_000_000:
+            timestamp = timestamp / 1000
+
+        return datetime.fromtimestamp(
+            timestamp,
+            tz=ZoneInfo("UTC")
+        ).strftime("%Y-%m-%d %H:%M:%S")
+
     except Exception:
         return None
 
@@ -164,14 +167,11 @@ def carregar_ids_mercados_base():
     df_mercados = pd.read_excel(ARQUIVO_BASE)
 
     if COLUNA_ID_MERCADO not in df_mercados.columns:
-        raise ValueError(f"Coluna '{COLUNA_ID_MERCADO}' não encontrada em {ARQUIVO_BASE}")
+        raise ValueError(
+            f"Coluna '{COLUNA_ID_MERCADO}' não encontrada em {ARQUIVO_BASE}"
+        )
 
-    ids = (
-        df_mercados[COLUNA_ID_MERCADO]
-        .dropna()
-        .astype(str)
-        .str.strip()
-    )
+    ids = df_mercados[COLUNA_ID_MERCADO].dropna().astype(str).str.strip()
 
     ids = ids[ids != ""]
 
@@ -193,7 +193,9 @@ def carregar_passagens_existentes():
     df_passagens["MercadoId"] = df_passagens["MercadoId"].astype(str)
 
     if "DataHora" in df_passagens.columns:
-        df_passagens["DataHora"] = pd.to_datetime(df_passagens["DataHora"], errors="coerce")
+        df_passagens["DataHora"] = pd.to_datetime(
+            df_passagens["DataHora"], errors="coerce"
+        )
 
     return df_passagens
 
@@ -202,12 +204,7 @@ def obter_ids_passagens_existentes(df_passagens):
     if df_passagens.empty:
         return set()
 
-    ids = (
-        df_passagens["MercadoId"]
-        .dropna()
-        .astype(str)
-        .str.strip()
-    )
+    ids = df_passagens["MercadoId"].dropna().astype(str).str.strip()
 
     ids = ids[ids != ""]
 
@@ -218,11 +215,13 @@ def montar_registros_passagens(mercado_id, graph_data):
     registros = []
 
     for item in graph_data:
-        registros.append({
-            "MercadoId": str(mercado_id),
-            "Value": item.get("value"),
-            "DataHora": converter_timestamp_para_data_hora(item.get("timestamp"))
-        })
+        registros.append(
+            {
+                "MercadoId": str(mercado_id),
+                "Value": item.get("value"),
+                "DataHora": converter_timestamp_para_data_hora(item.get("timestamp")),
+            }
+        )
 
     return registros
 
@@ -237,16 +236,16 @@ def salvar_passagens(df_passagens):
     df_passagens["MercadoId"] = df_passagens["MercadoId"].astype(str)
 
     if "DataHora" in df_passagens.columns:
-        df_passagens["DataHora"] = pd.to_datetime(df_passagens["DataHora"], errors="coerce")
+        df_passagens["DataHora"] = pd.to_datetime(
+            df_passagens["DataHora"], errors="coerce"
+        )
 
     df_passagens = df_passagens.drop_duplicates(
-        subset=["MercadoId", "Value", "DataHora"],
-        keep="last"
+        subset=["MercadoId", "Value", "DataHora"], keep="last"
     )
 
     df_passagens = df_passagens.sort_values(
-        by=["MercadoId", "DataHora"],
-        ascending=[True, True]
+        by=["MercadoId", "DataHora"], ascending=[True, True]
     ).reset_index(drop=True)
 
     df_passagens.to_excel(ARQUIVO_PASSAGENS, index=False)
@@ -259,6 +258,13 @@ def salvar_erros(erros):
     df_erros = pd.DataFrame(erros)
     df_erros.to_excel(ARQUIVO_ERROS, index=False)
 
+def processar_mercado(mercado_id):
+    session = criar_sessao()
+
+    graph_data = obter_graph_data_mercado(mercado_id, session)
+    registros = montar_registros_passagens(mercado_id, graph_data)
+
+    return mercado_id, registros
 
 def atualizar_passagens_carros_por_mercado():
     inicio = time.time()
@@ -271,11 +277,13 @@ def atualizar_passagens_carros_por_mercado():
 
     ids_pendentes = sorted(
         ids_mercados_base - ids_passagens_existentes,
-        key=lambda x: int(x) if str(x).isdigit() else str(x)
+        key=lambda x: int(x) if str(x).isdigit() else str(x),
     )
 
     print(f"Mercados em dados_todas_rodovias.xlsx: {len(ids_mercados_base)}")
-    print(f"Mercados já existentes em passagens_carros_por_mercado.xlsx: {len(ids_passagens_existentes)}")
+    print(
+        f"Mercados já existentes em passagens_carros_por_mercado.xlsx: {len(ids_passagens_existentes)}"
+    )
     print(f"Mercados pendentes para atualizar passagens: {len(ids_pendentes)}")
 
     if not ids_pendentes:
@@ -286,59 +294,70 @@ def atualizar_passagens_carros_por_mercado():
     erros = []
     total = len(ids_pendentes)
 
-    for posicao, mercado_id in enumerate(ids_pendentes, start=1):
-        try:
-            graph_data = obter_graph_data_mercado(mercado_id)
-            registros = montar_registros_passagens(mercado_id, graph_data)
 
-            if registros:
-                novos_registros.extend(registros)
+    print(f"Iniciando processamento com {MAX_THREADS} threads...")
+    print(f"Total de mercados pendentes: {total}")
 
-            percentual = (posicao / total) * 100
-            decorrido = time.time() - inicio
-            media_por_mercado = decorrido / posicao
-            restante = media_por_mercado * (total - posicao)
+    with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+        futuros = {
+            executor.submit(processar_mercado, mercado_id): mercado_id
+            for mercado_id in ids_pendentes
+        }
 
-            print(
-                f"[{posicao}/{total}] "
-                f"{percentual:.2f}% | "
-                f"Mercado {mercado_id} -> {len(registros)} passagens | "
-                f"Novas acumuladas: {len(novos_registros)} | "
-                f"Decorrido: {formatar_segundos(decorrido)} | "
-                f"Restante estimado: {formatar_segundos(restante)}"
-            )
+        for posicao, futuro in enumerate(as_completed(futuros), start=1):
+            mercado_id = futuros[futuro]
 
-        except Exception as e:
-            percentual = (posicao / total) * 100
-            decorrido = time.time() - inicio
-            media_por_mercado = decorrido / posicao
-            restante = media_por_mercado * (total - posicao)
+            try:
+                mercado_id, registros = futuro.result()
 
-            erros.append({
-                "MercadoId": mercado_id,
-                "Erro": str(e),
-                "DataErro": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            })
+                if registros:
+                    novos_registros.extend(registros)
 
-            print(
-                f"[{posicao}/{total}] "
-                f"{percentual:.2f}% | "
-                f"Erro no mercado {mercado_id}: {e} | "
-                f"Decorrido: {formatar_segundos(decorrido)} | "
-                f"Restante estimado: {formatar_segundos(restante)}"
-            )
+                percentual = (posicao / total) * 100
+                decorrido = time.time() - inicio
+                media_por_mercado = decorrido / posicao
+                restante = media_por_mercado * (total - posicao)
 
-        if posicao % SALVAR_A_CADA == 0:
-            if novos_registros:
-                df_novos = pd.DataFrame(novos_registros)
-                df_passagens = pd.concat([df_passagens, df_novos], ignore_index=True)
-                salvar_passagens(df_passagens)
-                novos_registros = []
-                print("Salvamento parcial realizado.")
+                print(
+                    f"[{posicao}/{total}] "
+                    f"{percentual:.2f}% | "
+                    f"Mercado {mercado_id} -> {len(registros)} passagens | "
+                    f"Novas acumuladas: {len(novos_registros)} | "
+                    f"Decorrido: {formatar_segundos(decorrido)} | "
+                    f"Restante estimado: {formatar_segundos(restante)}"
+                )
 
-            salvar_erros(erros)
+            except Exception as e:
+                percentual = (posicao / total) * 100
+                decorrido = time.time() - inicio
+                media_por_mercado = decorrido / posicao
+                restante = media_por_mercado * (total - posicao)
 
-        time.sleep(PAUSA_ENTRE_MERCADOS)
+                erros.append(
+                    {
+                        "MercadoId": mercado_id,
+                        "Erro": str(e),
+                        "DataErro": datetime.now(ZoneInfo("America/Sao_Paulo")).strftime("%Y-%m-%d %H:%M:%S"),
+                    }
+                )
+
+                print(
+                    f"[{posicao}/{total}] "
+                    f"{percentual:.2f}% | "
+                    f"Erro no mercado {mercado_id}: {e} | "
+                    f"Decorrido: {formatar_segundos(decorrido)} | "
+                    f"Restante estimado: {formatar_segundos(restante)}"
+                )
+
+            if posicao % SALVAR_A_CADA == 0:
+                if novos_registros:
+                    df_novos = pd.DataFrame(novos_registros)
+                    df_passagens = pd.concat([df_passagens, df_novos], ignore_index=True)
+                    salvar_passagens(df_passagens)
+                    novos_registros = []
+                    print("Salvamento parcial realizado.")
+
+                salvar_erros(erros)
 
     if novos_registros:
         df_novos = pd.DataFrame(novos_registros)
